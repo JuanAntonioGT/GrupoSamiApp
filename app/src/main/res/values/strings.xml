@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">GrupoSamiApp</string>
+
+    <!--== LoginActivity  ==-->
+    <string name="hint_user">Usuario</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="boton_entrar">Entrar</string>
+
+    <!--== MainActivity  ==-->
+    <string name="bienvenido">Bienvenido</string>
+    <string name="boton_medir">Medir</string>
+    <string name="boton_medido">Medido</string>
+    <string name="boton_montar">Montar</string>
+    <string name="boton_montado">Montado</string>
+
+    <!--== Formulario  ==-->
+    <string name="siguiente">Siguiente</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="atras">Atras</string>
+    <string name="fotografia_de_lejos">Fotografia de Lejos</string>
+    <string name="fotografia">Fotografia</string>
+    <string name="fotografia_intermedia">Fotografia Intermedia</string>
+    <string name="fotografia_de_cerca">Fotografia de Cerca</string>
+    <string name="algo_que_comentar_sobre_el_montaje">¿Algo que comentar sobre el montaje?</string>
+    <string name="fotos_a_adidas">Fotos Añadidas:</string>
+    <string name="a_adir_video">Añadir Video</string>
+    <string name="videos_a_adidos">Videos Añadidos:</string>
+    <string name="finalizar_medicion">Finalizar Medicion</string>
+</resources>
