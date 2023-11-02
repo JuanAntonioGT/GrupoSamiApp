@@ -1,11 +1,11 @@
-package com.gruposami.gruposamiapp.network.services
+package com.gruposami.gruposamiapp.data.network.login
 
 import android.util.Log
-import com.gruposami.gruposamiapp.network.apiClients.LoginApiClient
-import com.gruposami.gruposamiapp.network.model.LoginManagement
-import com.gruposami.gruposamiapp.network.model.LoginRequest
+import com.gruposami.gruposamiapp.data.network.login.model.LoginResponse
+import com.gruposami.gruposamiapp.ui.login.model.LoginRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import retrofit2.Response
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import javax.inject.Inject
@@ -13,7 +13,7 @@ import javax.inject.Inject
 class LoginService @Inject constructor(
     private val loginApiClient: LoginApiClient,
 ) {
-    suspend fun getUserService(loginRequest: LoginRequest): LoginManagement {
+    suspend fun getLoginService(loginRequest: LoginRequest): LoginManagement {
         return withContext(Dispatchers.IO) {
             try {
                 val response = loginApiClient.getLoginResponse(loginRequest)
@@ -36,3 +36,9 @@ class LoginService @Inject constructor(
 
     }
 }
+
+data class LoginManagement(
+    var comprobacion: Boolean,
+    var mensaje: String,
+    val response: Response<LoginResponse>?
+)

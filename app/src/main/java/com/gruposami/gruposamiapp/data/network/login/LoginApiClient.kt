@@ -1,7 +1,7 @@
-package com.gruposami.gruposamiapp.network.apiClients
+package com.gruposami.gruposamiapp.data.network.login
 
-import com.gruposami.gruposamiapp.data.models.LoginResponse
-import com.gruposami.gruposamiapp.network.model.LoginRequest
+import com.gruposami.gruposamiapp.data.network.login.model.LoginResponse
+import com.gruposami.gruposamiapp.ui.login.model.LoginRequest
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST

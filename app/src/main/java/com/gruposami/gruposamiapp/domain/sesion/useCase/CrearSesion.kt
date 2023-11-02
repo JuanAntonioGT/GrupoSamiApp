@@ -9,5 +9,8 @@ class CrearSesion@Inject constructor(
 ) {
     suspend operator fun invoke(sesion: Sesion) {
         sesionRepository.crearSesion(sesion)
+        Sesion.usuario = sesion.usuario!!
+        Sesion.usuarioId = sesion.usuarioId!!
+        Sesion.token = sesion.token!!
     }
 }

@@ -3,14 +3,12 @@ package com.gruposami.gruposamiapp.data.repositories
 import com.gruposami.gruposamiapp.data.database.dao.SesionDao
 import com.gruposami.gruposamiapp.data.database.entities.SesionEntity
 import com.gruposami.gruposamiapp.data.database.entities.toDatabase
-import com.gruposami.gruposamiapp.data.models.LoginResponse
+import com.gruposami.gruposamiapp.data.network.login.LoginManagement
+import com.gruposami.gruposamiapp.data.network.login.LoginService
 import com.gruposami.gruposamiapp.domain.sesion.model.Sesion
-import com.gruposami.gruposamiapp.network.model.LoginManagement
-import com.gruposami.gruposamiapp.network.model.LoginRequest
-import com.gruposami.gruposamiapp.network.services.LoginService
+import com.gruposami.gruposamiapp.ui.login.model.LoginRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Response
 import javax.inject.Inject
 
 
@@ -21,15 +19,26 @@ class SesionRepository @Inject constructor(
 
     /* Llamadas a la API */
     suspend fun loginRepository(loginRequest: LoginRequest): LoginManagement {
+        // Creo que la responsabilidad de comprobar los códigos, la tendría que tener aquí.
         return withContext(Dispatchers.IO) {
-            loginService.getUserService(loginRequest)
+            val comprobacionLogin = loginService.getLoginService(loginRequest)
+            if (comprobacionLogin.response != null){
+                if (comprobacionLogin.response.code() == 401) {
+                    comprobacionLogin.comprobacion = false
+                    comprobacionLogin.mensaje = "Usuario o contraseña incorrectos."
+                }
+                if (comprobacionLogin.response.code() == 403) {
+                    comprobacionLogin.comprobacion = false
+                    comprobacionLogin.mensaje = "No tienes permiso para acceder a la aplicación."
+                }
+            }
+            comprobacionLogin
         }
     }
 
     /* Llamadas a la BBDD */
-
     suspend fun crearSesion(sesion: Sesion) {
-        sesionDao.crearSesion(sesion.toDatabase())
+        sesionDao.insertarSesion(sesion.toDatabase())
     }
 
     /* Esto comprobará si la sesíón está registrada */

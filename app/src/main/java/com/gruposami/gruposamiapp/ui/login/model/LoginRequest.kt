@@ -1,5 +1,4 @@
-package com.gruposami.gruposamiapp.network.model
-
+package com.gruposami.gruposamiapp.ui.login.model
 
 data class LoginRequest(
     val username: String,
@@ -20,4 +19,5 @@ data class LoginRequest(
 data class Comprobacion(
     var booleano: Boolean,
     var mensaje: String?,
+    var logout: Boolean = false,
 )

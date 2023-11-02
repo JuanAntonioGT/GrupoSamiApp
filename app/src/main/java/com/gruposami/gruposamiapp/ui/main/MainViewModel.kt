@@ -1,140 +1,130 @@
 package com.gruposami.gruposamiapp.ui.main
 
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gruposami.gruposamiapp.domain.empleado.useCase.ObtenerEmpleado
+import com.gruposami.gruposamiapp.domain.empleado.useCase.ObtenerListaEmpleados
+import com.gruposami.gruposamiapp.domain.listadevalores.ObtenerListaDeValores
+import com.gruposami.gruposamiapp.domain.orden.EliminarOrdenes
+import com.gruposami.gruposamiapp.domain.orden.ObtenerOrdenes
 import com.gruposami.gruposamiapp.domain.sesion.useCase.CerrarSesion
+import com.gruposami.gruposamiapp.ui.main.model.NumeroOrdenes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.ConnectException
-import java.net.SocketTimeoutException
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val cerrarSesionUseCase: CerrarSesion,
-//    private val obtenerEmpleadosUseCase: ObtenerEmpleados,
-//    private val obtenerUsuarioUseCase: ObtenerUsuario,
-//    private val enviarDireccionIPUseCase: EnviarDireccionIP,
-//    private val sincronizarOrdenesUseCase: SincronizarOrdenes,
-//    private val obtenerListaDeValoresUseCase: ObtenerListaDeValoresUseCase,
-//    private val resumenOrdenesUseCase: ResumenOrdenes,
-
-//    private val modificarEstadoUseCase: ModificarSesionEstado,
-    // Traerse el formulario del servicio
-//    private val obtenerFormularioServicioUseCase: ObtenerFormularioServicioUseCase,
+    private val obtenerListaEmpleados: ObtenerListaEmpleados,
+    private val obtenerListaDeValores: ObtenerListaDeValores,
+    private val obtenerEmpleado: ObtenerEmpleado,
+    private val obtenerOrdenesUseCase: ObtenerOrdenes,
+    private val eliminarOrdenes: EliminarOrdenes,
 ) : ViewModel() {
 
     val isLoading = MutableLiveData<Boolean>()
     val mensaje = MutableLiveData<String?>()
     val mensaje_flotante = MutableLiveData<String>()
     val numeroOrdenes = MutableLiveData<NumeroOrdenes>()
+    val cerrarSesionView = MutableLiveData<Boolean>()
 
-    fun onCreate() {
+    fun init() {
         /* Actualizará los siguientes datos por separado:
             - La lista de empleados y leerá al usuario de la sesión
-            - Enviará tu dirección IP
+            # Enviará tu dirección IP - POR AHORA NOOOOO
             - Actualizará los datos de las órdenes de trabajo */
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-
                 Thread.sleep(500)
-//                listaTrabajadores()
-//                Thread.sleep(500)
-//                leerUsuario()
-//                Thread.sleep(500)
-//                direccionIP()
-//                Thread.sleep(500)
-//                listaDeValores()
-//                Thread.sleep(500)
-//                sincronizarOrdenes()
+                parametrosBasicos()
+                Thread.sleep(500)
+                leerUsuario()
+                Thread.sleep(500)
+                obtenerOrdenes()
             }
         }
     }
-//
-//    fun listaTrabajadores() {
-//        viewModelScope.launch {
-//            try {
-//                obtenerEmpleadosUseCase.invoke()
-//            } catch (e: Exception) {
-//                mensaje_flotante.postValue("Error al solicitar la lista de trabajadores.")
-//            } catch (e: ConnectException) {
-//                mensaje_flotante.postValue("Parece que no tienes internet.")
-//            }
-//        }
-//    }
-//
-//    fun leerUsuario() {
-//        viewModelScope.launch {
-//            withContext(Dispatchers.IO) {
-//                try {
-//                    val empleado = obtenerUsuarioUseCase.invoke()
-//                    mensaje.postValue(empleado?.first_name)
-//                } catch (e: Exception) {
-//                    mensaje_flotante.postValue("Error al leer los datos del usuario.")
-//                } catch (e: ConnectException) {
-//                    mensaje_flotante.postValue("Parece que no tienes internet.")
-//                }
-//            }
-//        }
-//    }
-//
-//    fun direccionIP() {
-//        viewModelScope.launch {
-//            try {
-//                val direccion_ip = IpAddress().getLocalIpAddress()
-//                enviarDireccionIPUseCase.invoke(direccion_ip.toString())
-//            } catch (e: Exception) {
-//                mensaje_flotante.postValue("Fallo de conexión")
-//            } catch (e: ConnectException) {
-//                mensaje_flotante.postValue("Parece que no tienes internet.")
-//            }
-//
-//        }
-//    }
-//
-//    fun listaDeValores() {
-//        viewModelScope.launch {
-//            try {
-//                obtenerListaDeValoresUseCase.invoke()
-//                obtenerFormularioServicioUseCase.invoke()
-//            } catch (e: Exception) {
-//                mensaje_flotante.postValue("Error al solicitar la lista de valores.")
-//            } catch (e: ConnectException) {
-//                mensaje_flotante.postValue("Parece que no tienes internet.")
-//            }
-//        }
-//    }
-//
-    fun cerrarSesion() {
+
+    private fun obtenerOrdenes() {
         viewModelScope.launch {
-            cerrarSesionUseCase.invoke()
+            val comprobar = obtenerOrdenesUseCase.invoke()
+
+            if (!comprobar.booleano) {
+                mensaje_flotante.postValue(comprobar.mensaje.toString())
+                Thread.sleep(500)
+                cerrarSesion()
+            }
         }
     }
-//
-//    fun sincronizarOrdenes() {
-//        viewModelScope.launch {
-//            withContext(Dispatchers.IO) {
-//                try {
-//                    isLoading.postValue(true)
-//                    sincronizarOrdenesUseCase.invoke()
-//                } catch (e: NullPointerException) {
-//                    mensaje_flotante.postValue("Error al leer las órdenes de trabajo. El error. $e")
-//                } catch (e: SocketTimeoutException) {
-//                    mensaje_flotante.postValue("Parece que el servidor no responde...")
-//                } catch (e: ConnectException) {
-//                    mensaje_flotante.postValue("Parece que no tienes internet.")
-//                } finally {
-//                    Thread.sleep(500)
+
+    private fun parametrosBasicos() {
+        viewModelScope.launch {
+            listaDeValores()
+            listaTrabajadores()
+        }
+
+    }
+
+    fun listaDeValores() {
+        viewModelScope.launch {
+            try {
+                obtenerListaDeValores.invoke()
+//                obtenerFormularioServicioUseCase.invoke()
+            } catch (e: Exception) {
+                mensaje_flotante.postValue("Error al solicitar la lista de valores.")
+            } catch (e: ConnectException) {
+                mensaje_flotante.postValue("Parece que no tienes internet.")
+            }
+        }
+    }
+
+    fun listaTrabajadores() {
+        viewModelScope.launch {
+            try {
+                obtenerListaEmpleados.invoke()
+            } catch (e: Exception) {
+                mensaje_flotante.postValue("Error al solicitar la lista de trabajadores.")
+            } catch (e: ConnectException) {
+                mensaje_flotante.postValue("Parece que no tienes internet.")
+            }
+        }
+    }
+
+    fun leerUsuario() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                try {
+                    val usuario = obtenerEmpleado.invoke()
+                    mensaje.postValue(usuario?.firstName)
+                } catch (e: Exception) {
+                    mensaje_flotante.postValue("Error al leer los datos del usuario.")
+                } catch (e: ConnectException) {
+                    mensaje_flotante.postValue("Parece que no tienes internet.")
+                }
+            }
+        }
+    }
+
+    fun sincronizarOrdenes() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                try {
+                    isLoading.postValue(true)
+                    obtenerOrdenes()
+                } finally {
 //                    resumenOrdenes()
-//                    isLoading.postValue(false)
-//                }
-//            }
-//        }
-//    }
-//
+                    isLoading.postValue(false)
+                }
+            }
+        }
+    }
+
 //    fun resumenOrdenes() {
 //        viewModelScope.launch {
 //            withContext(Dispatchers.IO) {
@@ -158,7 +148,7 @@ class MainViewModel @Inject constructor(
 //            var flagMontar = false
 //            var flagMontado = false
 //
-//            for (estado in orden.servicioCompleto){
+//            for (estado in orden.servicioCompleto) {
 //                if (estado?.estado?.estado.equals("Medir")) flagMedir = true
 //                if (estado?.estado?.estado.equals("Medido")) flagMedido = true
 //                if (estado?.estado?.estado.equals("Montar")) flagMontar = true
@@ -175,5 +165,12 @@ class MainViewModel @Inject constructor(
 //        montar.postValue(motanrInt)
 //        montado.postValue(montadoInt)
 //    }
+
+    fun cerrarSesion() {
+        viewModelScope.launch {
+            cerrarSesionUseCase.invoke()
+            cerrarSesionView.postValue(true)
+        }
+    }
 
 }

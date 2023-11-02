@@ -1,4 +1,4 @@
-package com.gruposami.gruposamiapp.ui.main
+package com.gruposami.gruposamiapp.ui.main.model
 
 data class NumeroOrdenes(
     val medir: Int = 0,

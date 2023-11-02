@@ -1,4 +1,4 @@
-package com.gruposami.gruposamiapp.di
+package com.gruposami.gruposamiapp.data.di
 
 import android.content.Context
 import androidx.room.Room
@@ -20,8 +20,7 @@ object RoomModule {
     @Singleton
     @Provides
     fun provideRoom(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, DataBase::class.java, MOBILE_DATABASE_NAME)
-            .build()
+        Room.databaseBuilder(context, DataBase::class.java, MOBILE_DATABASE_NAME).build()
 
     @Singleton
     @Provides
@@ -30,19 +29,19 @@ object RoomModule {
     @Singleton
     @Provides
     fun providerEmpleadoDao(db: DataBase) = db.getEmpleadoDao()
-//
-//    @Singleton
-//    @Provides
-//    fun providerListaDeValoresDao(db: DataBase) = db.getListaDeValoresDao()
-//
-//    @Singleton
-//    @Provides
-//    fun providerOrdenDao(db: DataBase) = db.getOrdenDao()
-//
-//    @Singleton
-//    @Provides
-//    fun providerClienteDao(db: DataBase) = db.getClienteDao()
-//
+
+    @Singleton
+    @Provides
+    fun providerListaDeValoresDao(db: DataBase) = db.getListaDeValoresDao()
+
+    @Singleton
+    @Provides
+    fun providerOrdenDao(db: DataBase) = db.getOrdenDao()
+
+    @Singleton
+    @Provides
+    fun providerClienteDao(db: DataBase) = db.getClienteDao()
+
 //    @Singleton
 //    @Provides
 //    fun providerDireccionDao(db: DataBase) = db.getDireccionDao()

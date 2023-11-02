@@ -7,7 +7,7 @@ import com.gruposami.gruposamiapp.data.database.entities.SesionEntity
 interface SesionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun crearSesion(userEntity: SesionEntity)
+    suspend fun insertarSesion(userEntity: SesionEntity)
 
     /* Esta query sirve para traernos las única entrada de la sesión */
     @Query("SELECT * FROM sesion_table where id_sesion = 0")

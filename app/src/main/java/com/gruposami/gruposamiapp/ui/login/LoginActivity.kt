@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.gruposami.gruposamiapp.databinding.ActivityLoginBinding
-import com.gruposami.gruposamiapp.network.model.LoginRequest
+import com.gruposami.gruposamiapp.ui.login.model.LoginRequest
 import com.gruposami.gruposamiapp.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        comprobarTodosPermisos()
+        comprobarPermisos()
 
         loginViewModel.init()
 
@@ -85,11 +85,9 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun comprobarTodosPermisos() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.INTERNET
-            ) == PackageManager.PERMISSION_GRANTED
+    private fun comprobarPermisos() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+            PackageManager.PERMISSION_GRANTED
         ) {
             // El permiso ya ha sido otorgado
             Log.i("LoginActivity", "Ya tienes permiso de internet")

@@ -13,6 +13,7 @@ data class EmpleadoEntity(
     @ColumnInfo(name = "username") val username: String?,
     @ColumnInfo(name = "first_name") var firstName: String?,
     @ColumnInfo(name = "last_name") var lastName: String?,
+    @ColumnInfo(name = "avatar") var avatar: String?,
 )
 
 fun Empleado.toDatabase() = EmpleadoEntity(
@@ -20,4 +21,5 @@ fun Empleado.toDatabase() = EmpleadoEntity(
     username = username,
     firstName = firstName,
     lastName = lastName,
+    avatar = avatar
 )

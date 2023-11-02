@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.gruposami.gruposamiapp.domain.login.useCase.ComprobarLogin
 import com.gruposami.gruposamiapp.domain.sesion.model.Sesion
 import com.gruposami.gruposamiapp.domain.sesion.useCase.ComprobarSesion
-import com.gruposami.gruposamiapp.network.model.LoginRequest
+import com.gruposami.gruposamiapp.ui.login.model.LoginRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -45,8 +45,8 @@ class LoginViewModel @Inject constructor(
             _mostrarTarjeta.postValue(false)
 
             withContext(Dispatchers.IO) {
-                Thread.sleep(500)
                 val comprobarUsuario = comprobarSesion.invoke()
+                Thread.sleep(500)
                 if (comprobarUsuario) {
                     _logueado.postValue(true)
                 } else {

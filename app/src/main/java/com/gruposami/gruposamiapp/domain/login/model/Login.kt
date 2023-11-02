@@ -1,6 +1,6 @@
 package com.gruposami.gruposamiapp.domain.login.model
 
-import com.gruposami.gruposamiapp.data.models.LoginResponse
+import com.gruposami.gruposamiapp.data.network.login.model.LoginResponse
 
 data class Login(
     var token: String?,
@@ -15,3 +15,4 @@ fun LoginResponse.toDomain() = Login(
     message = message,
     succes = succes
 )
+

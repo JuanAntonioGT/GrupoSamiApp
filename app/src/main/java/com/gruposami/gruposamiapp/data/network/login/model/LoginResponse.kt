@@ -1,4 +1,4 @@
-package com.gruposami.gruposamiapp.data.models
+package com.gruposami.gruposamiapp.data.network.login.model
 
 import com.google.gson.annotations.SerializedName
 
