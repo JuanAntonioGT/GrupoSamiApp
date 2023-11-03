@@ -7,11 +7,15 @@ import com.gruposami.gruposamiapp.data.database.dao.ListaDeValoresDao
 import com.gruposami.gruposamiapp.data.database.dao.SesionDao
 import com.gruposami.gruposamiapp.data.database.dao.OrdenDao
 import com.gruposami.gruposamiapp.data.database.dao.ClienteDao
+import com.gruposami.gruposamiapp.data.database.dao.ContactoDao
+import com.gruposami.gruposamiapp.data.database.dao.DireccionDao
 import com.gruposami.gruposamiapp.data.database.entities.EmpleadoEntity
 import com.gruposami.gruposamiapp.data.database.entities.SesionEntity
 import com.gruposami.gruposamiapp.data.database.entities.ListaDeValoresEntity
 import com.gruposami.gruposamiapp.data.database.entities.OrdenEntity
 import com.gruposami.gruposamiapp.data.database.entities.ClienteEntity
+import com.gruposami.gruposamiapp.data.database.entities.ContactoEntity
+import com.gruposami.gruposamiapp.data.database.entities.DireccionEntity
 
 @Database(entities = [
         SesionEntity::class,
@@ -19,8 +23,8 @@ import com.gruposami.gruposamiapp.data.database.entities.ClienteEntity
         ListaDeValoresEntity::class,
         OrdenEntity::class,
         ClienteEntity::class,
-//        DireccionEntity::class,
-//        ContactoEntity::class,
+        DireccionEntity::class,
+        ContactoEntity::class,
 //        ServicioEntity::class,
 //        EstadoEntity::class,
 //        MultimediaEntity::class,
@@ -40,8 +44,8 @@ abstract class DataBase : RoomDatabase() {
     abstract fun getListaDeValoresDao(): ListaDeValoresDao
     abstract fun getOrdenDao(): OrdenDao
     abstract fun getClienteDao(): ClienteDao
-//    abstract fun getDireccionDao(): DireccionDao
-//    abstract fun getContactoDao(): ContactoDao
+    abstract fun getDireccionDao(): DireccionDao
+    abstract fun getContactoDao(): ContactoDao
 //    abstract fun getServicioDao(): ServicioDao
 //    abstract fun getEstadoDao(): EstadoDao
 //    abstract fun getMultimediaDao(): MultimediaDao

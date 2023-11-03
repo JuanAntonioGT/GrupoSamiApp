@@ -1,7 +1,7 @@
 package com.gruposami.gruposamiapp.domain.orden.model
 
 import com.gruposami.gruposamiapp.data.database.entities.OrdenEntity
-import com.gruposami.gruposamiapp.data.network.orden.OrdenResponse
+import com.gruposami.gruposamiapp.data.network.orden.model.OrdenResponse
 
 
 data class Orden(

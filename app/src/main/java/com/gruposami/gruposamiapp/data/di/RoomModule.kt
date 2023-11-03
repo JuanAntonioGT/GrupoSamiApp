@@ -42,14 +42,14 @@ object RoomModule {
     @Provides
     fun providerClienteDao(db: DataBase) = db.getClienteDao()
 
-//    @Singleton
-//    @Provides
-//    fun providerDireccionDao(db: DataBase) = db.getDireccionDao()
-//
-//    @Singleton
-//    @Provides
-//    fun providerContactoDao(db: DataBase) = db.getContactoDao()
-//
+    @Singleton
+    @Provides
+    fun providerDireccionDao(db: DataBase) = db.getDireccionDao()
+
+    @Singleton
+    @Provides
+    fun providerContactoDao(db: DataBase) = db.getContactoDao()
+
 //    @Singleton
 //    @Provides
 //    fun providerServicioDao(db: DataBase) = db.getServicioDao()

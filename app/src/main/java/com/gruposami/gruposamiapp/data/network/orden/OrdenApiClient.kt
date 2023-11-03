@@ -1,5 +1,6 @@
 package com.gruposami.gruposamiapp.data.network.orden
 
+import com.gruposami.gruposamiapp.data.network.orden.model.OrdenResponse
 import retrofit2.Response
 import retrofit2.http.GET
 

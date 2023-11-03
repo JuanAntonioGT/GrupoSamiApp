@@ -1,6 +1,6 @@
 package com.gruposami.gruposamiapp.domain.orden
 
-import com.gruposami.gruposamiapp.data.network.orden.OrdenResponse
+import com.gruposami.gruposamiapp.data.network.orden.model.OrdenResponse
 import com.gruposami.gruposamiapp.data.repositories.ClienteRepository
 import com.gruposami.gruposamiapp.data.repositories.OrdenRepository
 import com.gruposami.gruposamiapp.domain.cliente.model.toDomain
@@ -10,18 +10,17 @@ import javax.inject.Inject
 
 class ObtenerOrdenes @Inject constructor(
     private val ordenRepository: OrdenRepository,
-    private val clienteRepository: ClienteRepository,
+    private val insertarOrden: InsertarOrden,
 ) {
     suspend operator fun invoke(): Comprobacion {
-        val serviceManagement = ordenRepository.obtenerOrdenesApi()
-        val comprobacion = Comprobacion(serviceManagement.comprobacion, serviceManagement.mensaje)
+        val ordenManagement = ordenRepository.obtenerOrdenesApi()
+        val comprobacion = Comprobacion(ordenManagement.comprobacion, ordenManagement.mensaje)
 
-        if (serviceManagement.comprobacion && serviceManagement.response != null) {
-            val listadoOrdenes: List<OrdenResponse> = serviceManagement.response.body()!!
-            for (orden in listadoOrdenes) {
-                ordenRepository.insertarOrden(orden.toDomain())
-                if (orden.clienteResponse != null) {
-                    clienteRepository.insertarCliente(orden.clienteResponse!!.toDomain())
+        if (ordenManagement.comprobacion && ordenManagement.response != null) {
+            val listadoOrdenes: List<OrdenResponse>? = ordenManagement.response.body()
+            if (listadoOrdenes != null) {
+                for (orden in listadoOrdenes) {
+                    insertarOrden.invoke(orden)
                 }
             }
         }

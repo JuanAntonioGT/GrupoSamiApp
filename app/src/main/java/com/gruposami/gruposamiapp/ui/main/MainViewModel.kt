@@ -57,7 +57,6 @@ class MainViewModel @Inject constructor(
 
             if (!comprobar.booleano) {
                 mensaje_flotante.postValue(comprobar.mensaje.toString())
-                Thread.sleep(500)
                 cerrarSesion()
             }
         }

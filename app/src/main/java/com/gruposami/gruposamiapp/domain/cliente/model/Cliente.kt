@@ -1,7 +1,7 @@
 package com.gruposami.gruposamiapp.domain.cliente.model
 
 import com.gruposami.gruposamiapp.data.database.entities.ClienteEntity
-import com.gruposami.gruposamiapp.data.network.orden.ClienteResponse
+import com.gruposami.gruposamiapp.data.network.orden.model.ClienteResponse
 
 data class Cliente(
     val id: Int,

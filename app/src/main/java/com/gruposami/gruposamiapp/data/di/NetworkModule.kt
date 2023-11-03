@@ -49,7 +49,6 @@ object NetworkModule {
         return retrofit.create(LoginApiClient::class.java)
     }
 
-
     @Singleton
     @Provides
     fun providesOkhttpInterceptor(): Interceptor {
@@ -88,7 +87,6 @@ object NetworkModule {
             .build()
     }
 
-
     @Singleton
     @Provides
     fun provideEmpleadoApiClient(@Named("Token") retrofit: Retrofit): EmpleadoApiClient {
@@ -106,7 +104,7 @@ object NetworkModule {
     fun provideOrdenApiClient(@Named("Token") retrofit: Retrofit): OrdenApiClient {
         return retrofit.create(OrdenApiClient::class.java)
     }
-//
+
 //    @Singleton
 //    @Provides
 //    fun provideFormularioServicioApiClient(@Named("Token") retrofit: Retrofit): FormularioServicioApiClient {

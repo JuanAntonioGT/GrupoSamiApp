@@ -1,4 +1,4 @@
-package com.gruposami.gruposamiapp.data.network.orden
+package com.gruposami.gruposamiapp.data.network.orden.model
 
 import com.google.gson.annotations.SerializedName
 import javax.inject.Singleton
