@@ -50,24 +50,24 @@ object RoomModule {
     @Provides
     fun providerContactoDao(db: DataBase) = db.getContactoDao()
 
-//    @Singleton
-//    @Provides
-//    fun providerServicioDao(db: DataBase) = db.getServicioDao()
-//
-//    @Singleton
-//    @Provides
-//    fun providerEstadoDao(db: DataBase) = db.getEstadoDao()
-//
-//    @Singleton
-//    @Provides
-//    fun providerMultimediaDao(db: DataBase) = db.getMultimediaDao()
-//
-//    @Singleton
-//    @Provides
-//    fun providerFirmaDao(db: DataBase) = db.getFirmaDao()
-//
-//    @Singleton
-//    @Provides
-//    fun providerFormularioServicioDao(db: DataBase) = db.getFormularioServicioDao()
+    @Singleton
+    @Provides
+    fun providerServicioDao(db: DataBase) = db.getServicioDao()
+
+    @Singleton
+    @Provides
+    fun providerEstadoDao(db: DataBase) = db.getEstadoDao()
+
+    @Singleton
+    @Provides
+    fun providerMultimediaDao(db: DataBase) = db.getMultimediaDao()
+
+    @Singleton
+    @Provides
+    fun providerFirmaDao(db: DataBase) = db.getFirmaDao()
+
+    @Singleton
+    @Provides
+    fun providerFormularioServicioDao(db: DataBase) = db.getFormularioServicioDao()
 
 }

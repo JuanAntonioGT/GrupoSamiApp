@@ -1,5 +1,6 @@
 package com.gruposami.gruposamiapp.data.network.listadevalores
 
+import com.gruposami.gruposamiapp.data.network.listadevalores.model.ListaDeValoresResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

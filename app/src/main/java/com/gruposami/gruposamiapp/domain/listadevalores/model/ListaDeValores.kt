@@ -1,7 +1,7 @@
 package com.gruposami.gruposamiapp.domain.listadevalores.model
 
 import com.gruposami.gruposamiapp.data.database.entities.ListaDeValoresEntity
-import com.gruposami.gruposamiapp.data.network.listadevalores.ListaDeValoresResponse
+import com.gruposami.gruposamiapp.data.network.listadevalores.model.ListaDeValoresResponse
 
 data class ListaDeValores(
     var id: Int,

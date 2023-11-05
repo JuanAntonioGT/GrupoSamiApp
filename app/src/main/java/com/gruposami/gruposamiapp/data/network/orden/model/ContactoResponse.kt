@@ -1,8 +1,10 @@
 package com.gruposami.gruposamiapp.data.network.orden.model
 
 import com.google.gson.annotations.SerializedName
+import javax.inject.Singleton
 
-data class ContactoResponse(
+@Singleton
+class ContactoResponse(
     @SerializedName("id") var id: Int,
     @SerializedName("contacto") var contacto: String?,
     @SerializedName("tipo_contacto") var tipoContacto: String?,

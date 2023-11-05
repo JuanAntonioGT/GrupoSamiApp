@@ -1,4 +1,4 @@
-package com.gruposami.gruposamiapp.data.network.listadevalores
+package com.gruposami.gruposamiapp.data.network.listadevalores.model
 
 import com.google.gson.annotations.SerializedName
 

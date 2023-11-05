@@ -12,7 +12,7 @@ interface EmpleadoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertarEmpleado(empleadoEntity: EmpleadoEntity)
 
-    @Query("SELECT * FROM empleado_table e " +
+    @Query("SELECT e.* FROM empleado_table e " +
             "join sesion_table s on s.usuario_id = e.id_empleado")
     suspend fun obtenerEmpleadoSesion(): EmpleadoEntity
 

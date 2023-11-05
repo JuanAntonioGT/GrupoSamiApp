@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.gruposami.gruposamiapp.domain.orden.model.Orden
+import com.gruposami.gruposamiapp.domain.orden.model.OrdenEstado
 
 @Entity(tableName = "orden_table")
 data class OrdenEntity(
@@ -14,8 +15,8 @@ data class OrdenEntity(
     @ColumnInfo(name = "numero_referencia") var numeroReferencia: String?,
     @ColumnInfo(name = "comentario") var comentario: String?,
     @ColumnInfo(name = "finalizado") var finalizado: Boolean?,
-    @ColumnInfo(name = "fecha_creacion") var fechaCreacion: String?,
-    @ColumnInfo(name = "fecha_modificacion") var fechaModificacion: String?,
+    @ColumnInfo(name = "fecha_creacion") var fechaCreacion: String,
+    @ColumnInfo(name = "fecha_modificacion") var fechaModificacion: String,
 )
 
 fun Orden.toDatabase() = OrdenEntity(
@@ -27,4 +28,15 @@ fun Orden.toDatabase() = OrdenEntity(
     finalizado = finalizado,
     fechaCreacion = fechaCreacion,
     fechaModificacion = fechaModificacion,
+)
+
+@Entity(tableName = "orden_estado_table", primaryKeys = ["orden_id", "estado_id"])
+data class OrdenEstadoEntity(
+    @ColumnInfo(name = "orden_id") val ordenId: Int,
+    @ColumnInfo(name = "estado_id") val estadoId: Int,
+)
+
+fun OrdenEstado.toDatabase() = OrdenEstadoEntity(
+    ordenId = ordenId,
+    estadoId = estadoId,
 )

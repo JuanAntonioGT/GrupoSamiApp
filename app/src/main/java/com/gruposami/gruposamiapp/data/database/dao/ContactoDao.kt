@@ -12,13 +12,13 @@ interface ContactoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertarContacto(contacto: ContactoEntity)
 
-    @Query("DELETE FROM contacto_table where id_contacto =:id ")
-    suspend fun eliminarContacto(id: Int?)
+    @Query("SELECT * FROM contacto_table where cliente_id =:clienteId ")
+    suspend fun obtenerContactosPorCliente(clienteId: Int): List<ContactoEntity>
 
     @Query("UPDATE contacto_table SET id_contacto = :nuevaId where id_contacto = :anteriorId ")
-    suspend fun modificarContactoId(anteriorId: Int?, nuevaId: Int?)
+    suspend fun modificarContactoId(anteriorId: Int, nuevaId: Int)
 
-    @Query("SELECT * FROM contacto_table where cliente_id =:clienteId ")
-    suspend fun obtenerListaContactos(clienteId: Int): List<ContactoEntity>
+    @Query("DELETE FROM contacto_table where id_contacto =:id ")
+    suspend fun eliminarContacto(id: Int)
 
 }

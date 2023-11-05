@@ -2,7 +2,7 @@ package com.gruposami.gruposamiapp.data.repositories
 
 import com.gruposami.gruposamiapp.data.database.dao.ListaDeValoresDao
 import com.gruposami.gruposamiapp.data.database.entities.ListaDeValoresEntity
-import com.gruposami.gruposamiapp.data.network.listadevalores.ListaDeValoresResponse
+import com.gruposami.gruposamiapp.data.network.listadevalores.model.ListaDeValoresResponse
 import com.gruposami.gruposamiapp.data.network.listadevalores.ListaDeValoresService
 import com.gruposami.gruposamiapp.domain.listadevalores.model.ListaDeValores
 import com.gruposami.gruposamiapp.domain.listadevalores.model.toDomain

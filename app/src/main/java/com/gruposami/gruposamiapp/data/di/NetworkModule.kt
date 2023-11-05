@@ -2,8 +2,10 @@ package com.gruposami.gruposamiapp.data.di
 
 import com.gruposami.gruposamiapp.domain.sesion.model.Sesion
 import com.gruposami.gruposamiapp.data.network.empleado.EmpleadoApiClient
+import com.gruposami.gruposamiapp.data.network.formularioservicio.FormularioServicioApiClient
 import com.gruposami.gruposamiapp.data.network.listadevalores.ListaDeValoresApiClient
 import com.gruposami.gruposamiapp.data.network.login.LoginApiClient
+import com.gruposami.gruposamiapp.data.network.multimedia.MultimediaApiClient
 import com.gruposami.gruposamiapp.data.network.orden.OrdenApiClient
 import dagger.Module
 import dagger.Provides
@@ -105,24 +107,16 @@ object NetworkModule {
         return retrofit.create(OrdenApiClient::class.java)
     }
 
-//    @Singleton
-//    @Provides
-//    fun provideFormularioServicioApiClient(@Named("Token") retrofit: Retrofit): FormularioServicioApiClient {
-//        return retrofit.create(FormularioServicioApiClient::class.java)
-//    }
-//
-//    @Singleton
-//    @Provides
-//    fun providerMultimediaApiClient(@Named("Token") retrofit: Retrofit): MultimediaApiClient {
-//        return retrofit.create(MultimediaApiClient::class.java)
-//    }
+    @Singleton
+    @Provides
+    fun provideFormularioServicioApiClient(@Named("Token") retrofit: Retrofit): FormularioServicioApiClient {
+        return retrofit.create(FormularioServicioApiClient::class.java)
+    }
 
-// Este ApiCLient se creó para enviar la ip. Ya veremos...
-//    @Singleton
-//    @Provides
-//    fun provideSesionApiClient(@Named("Token") retrofit: Retrofit): SesionApiClient {
-//        return retrofit.create(SesionApiClient::class.java)
-//    }
-//
+    @Singleton
+    @Provides
+    fun providerMultimediaApiClient(@Named("Token") retrofit: Retrofit): MultimediaApiClient {
+        return retrofit.create(MultimediaApiClient::class.java)
+    }
 
 }

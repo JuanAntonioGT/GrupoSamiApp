@@ -11,8 +11,8 @@ data class Orden(
     val numeroReferencia: String?,
     var comentario: String?,
     val finalizado: Boolean?,
-    val fechaCreacion: String?,
-    var fechaModificacion: String?,
+    val fechaCreacion: String,
+    var fechaModificacion: String,
 )
 
 fun OrdenResponse.toDomain() = Orden(
