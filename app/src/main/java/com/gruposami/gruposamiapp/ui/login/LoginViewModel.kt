@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gruposami.gruposamiapp.domain.empleado.useCase.ObtenerListaEmpleados
+import com.gruposami.gruposamiapp.domain.formularioservicio.ObtenerFormularioServicio
+import com.gruposami.gruposamiapp.domain.listadevalores.ObtenerListaDeValores
 import com.gruposami.gruposamiapp.domain.login.useCase.ComprobarLogin
 import com.gruposami.gruposamiapp.domain.sesion.model.Sesion
 import com.gruposami.gruposamiapp.domain.sesion.useCase.ComprobarSesion
@@ -18,6 +21,9 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val comprobarSesion: ComprobarSesion,
     private val comprobarLogin: ComprobarLogin,
+    private val obtenerListaEmpleados: ObtenerListaEmpleados,
+    private val obtenerListaDeValores: ObtenerListaDeValores,
+    private val obtenerFormularioServicio: ObtenerFormularioServicio,
 ) : ViewModel() {
 
     private val _cargando = MutableLiveData<Boolean>()
@@ -87,9 +93,44 @@ class LoginViewModel @Inject constructor(
             _cargando.postValue(false)
             _mostrarTarjeta.postValue(true)
             if (comprobarUsuario.booleano) {
+                // Que te traigas las listas de valores y todos los valores estáticos de la app.
+                parametrosBasicos()
                 _logueado.postValue(true)
             } else {
                 _error.postValue(comprobarUsuario.mensaje.toString())
+            }
+        }
+    }
+
+    private fun parametrosBasicos() {
+        listaDeValores()
+        listaTrabajadores()
+        listaFormularioServicios()
+    }
+
+    private fun listaDeValores() {
+        viewModelScope.launch {
+            val comprobar = obtenerListaEmpleados.invoke()
+            if (!comprobar.booleano) {
+                _mensaje.postValue(comprobar.mensaje.toString())
+            }
+        }
+    }
+
+    private fun listaTrabajadores() {
+        viewModelScope.launch {
+            val comprobar = obtenerListaDeValores.invoke()
+            if (!comprobar.booleano) {
+                _mensaje.postValue(comprobar.mensaje.toString())
+            }
+        }
+    }
+
+    private fun listaFormularioServicios() {
+        viewModelScope.launch {
+            val comprobar = obtenerFormularioServicio.invoke()
+            if (!comprobar.booleano) {
+                _mensaje.postValue(comprobar.mensaje.toString())
             }
         }
     }

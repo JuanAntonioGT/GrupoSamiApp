@@ -14,6 +14,7 @@ import com.gruposami.gruposamiapp.R
 import com.gruposami.gruposamiapp.databinding.ActivityMainBinding
 import com.gruposami.gruposamiapp.domain.sesion.model.Sesion
 import com.gruposami.gruposamiapp.ui.login.LoginActivity
+import com.gruposami.gruposamiapp.ui.orden.OrdenActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.init()
 
-        mainViewModel.mensaje_flotante.observe(this, Observer {
+        mainViewModel.mensajeFlotante.observe(this, Observer {
             Toast.makeText(this@MainActivity, it, Toast.LENGTH_LONG).show()
         })
 
@@ -59,28 +60,28 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.numeroOrdenes.observe(this) {
             if (it.medir > 0) {
-                binding.botonMedir.text = " Medir -> $it"
+                binding.botonMedir.text = " Medir -> ${it.medir}"
                 binding.botonMedir.setBackgroundColor(naranja)
             } else {
                 binding.botonMedir.text = " Medir -> Sin Ordenes"
                 binding.botonMedir.setBackgroundColor(grisClaro)
             }
             if (it.medido > 0) {
-                binding.botonMedidas.text = " Medidas -> $it"
+                binding.botonMedidas.text = " Medidas -> ${it.medido}"
                 binding.botonMedidas.setBackgroundColor(verde)
             } else {
                 binding.botonMedidas.text = " Medidas -> Sin Ordenes"
                 binding.botonMedidas.setBackgroundColor(grisClaro)
             }
             if (it.montar > 0) {
-                binding.botonMontar.text = " Montar -> $it"
+                binding.botonMontar.text = " Montar -> ${it.montar}"
                 binding.botonMontar.setBackgroundColor(naranja)
             } else {
                 binding.botonMontar.text = " Montar -> Sin Ordenes"
                 binding.botonMontar.setBackgroundColor(grisClaro)
             }
             if (it.montado > 0) {
-                binding.botonMontadas.text = " Montadas -> $it"
+                binding.botonMontadas.text = " Montadas -> ${it.montado}"
                 binding.botonMontadas.setBackgroundColor(verde)
             } else {
                 binding.botonMontadas.text = " Montadas -> Sin Ordenes"
@@ -103,25 +104,25 @@ class MainActivity : AppCompatActivity() {
 //            }
         }
 
-//        binding.botonMedir.setOnClickListener {
-//            Sesion.filtro_estado = "Medir"
-//            startActivity(Intent(this@MainActivity, OrdenActivity::class.java))
-//        }
-//
-//        binding.botonMedidas.setOnClickListener {
-//            Sesion.filtro_estado = "Medido"
-//            startActivity(Intent(this@MainActivity, OrdenActivity::class.java))
-//        }
-//
-//        binding.botonMontar.setOnClickListener {
-//            Sesion.filtro_estado = "Montar"
-//            startActivity(Intent(this@MainActivity, OrdenActivity::class.java))
-//        }
-//
-//        binding.botonMontadas.setOnClickListener {
-//            Sesion.filtro_estado = "Montado"
-//            startActivity(Intent(this@MainActivity, OrdenActivity::class.java))
-//        }
+        binding.botonMedir.setOnClickListener {
+            Sesion.filtroEstado = "Medir"
+            startActivity(Intent(this@MainActivity, OrdenActivity::class.java))
+        }
+
+        binding.botonMedidas.setOnClickListener {
+            Sesion.filtroEstado = "Medido"
+            startActivity(Intent(this@MainActivity, OrdenActivity::class.java))
+        }
+
+        binding.botonMontar.setOnClickListener {
+            Sesion.filtroEstado = "Montar"
+            startActivity(Intent(this@MainActivity, OrdenActivity::class.java))
+        }
+
+        binding.botonMontadas.setOnClickListener {
+            Sesion.filtroEstado = "Montado"
+            startActivity(Intent(this@MainActivity, OrdenActivity::class.java))
+        }
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

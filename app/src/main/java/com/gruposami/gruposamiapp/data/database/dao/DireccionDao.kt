@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.gruposami.gruposamiapp.data.database.entities.ContactoEntity
 import com.gruposami.gruposamiapp.data.database.entities.DireccionEntity
 
 @Dao
@@ -19,6 +18,10 @@ interface DireccionDao {
     @Query("UPDATE direccion_table SET id_direccion = :nuevaId where id_direccion = :anteriorId ")
     suspend fun modificarDireccionId(anteriorId: Int, nuevaId: Int)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun modificarDireccion(direccion: DireccionEntity)
+
     @Query("DELETE FROM direccion_table where id_direccion =:id ")
     suspend fun eliminarDireccion(id: Int)
+
 }

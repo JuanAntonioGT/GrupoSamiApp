@@ -5,7 +5,8 @@ import com.gruposami.gruposamiapp.data.database.entities.OrdenEstadoEntity
 
 data class OrdenEstado(
     val ordenId: Int,
-    val estadoId: Int)
+    val estadoId: Int
+)
 
 fun OrdenEstadoEntity.toDomain() = OrdenEstado(
     ordenId = ordenId,

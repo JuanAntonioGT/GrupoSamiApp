@@ -13,8 +13,8 @@ class ClienteRepository @Inject constructor(
         clienteDao.insertarCliente(cliente.toDatabase())
     }
 
-//    suspend fun eliminarCliente(idCliente: Int) {
-//        clienteDao.eliminarCliente(idCliente)
-//    }
+    suspend fun eliminarCliente(idCliente: Int) {
+        clienteDao.eliminarCliente(idCliente)
+    }
 
 }

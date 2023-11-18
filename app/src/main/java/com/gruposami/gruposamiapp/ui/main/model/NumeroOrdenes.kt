@@ -1,8 +1,8 @@
 package com.gruposami.gruposamiapp.ui.main.model
 
 data class NumeroOrdenes(
-    val medir: Int = 0,
-    val medido: Int = 0,
-    val montar: Int = 0,
-    val montado: Int = 0,
+    var medir: Int = 0,
+    var medido: Int = 0,
+    var montar: Int = 0,
+    var montado: Int = 0,
 )

@@ -8,7 +8,11 @@ import javax.inject.Inject
 class ModificarContactoId @Inject constructor(
     private val contactoRepository: ContactoRepository
 ) {
-    suspend operator fun invoke(contactos: List<CambioId>) {
-        contactos.map { contactoRepository.modificarContactoId(it) }
+    suspend operator fun invoke(contactos: List<CambioId?>) {
+        contactos.map {
+            if (it != null) {
+                contactoRepository.modificarContactoId(it)
+            }
+        }
     }
 }

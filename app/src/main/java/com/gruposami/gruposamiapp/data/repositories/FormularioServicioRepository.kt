@@ -4,36 +4,59 @@ package com.gruposami.gruposamiapp.data.repositories
 import com.gruposami.gruposamiapp.data.database.dao.FormularioServicioDao
 import com.gruposami.gruposamiapp.data.database.entities.FormularioServicioEntity
 import com.gruposami.gruposamiapp.data.database.entities.FormularioServicioRelacionesEntity
-import com.gruposami.gruposamiapp.data.database.entities.toDatabase
+import com.gruposami.gruposamiapp.data.network.formularioservicio.FormularioServicioManagement
+import com.gruposami.gruposamiapp.data.network.formularioservicio.FormularioServicioRelacionesManagement
 import com.gruposami.gruposamiapp.data.network.formularioservicio.FormularioServicioService
-import com.gruposami.gruposamiapp.domain.formularioservicio.model.FormularioServicio
-import com.gruposami.gruposamiapp.domain.formularioservicio.model.FormularioServicioRelaciones
+import com.gruposami.gruposamiapp.domain.login.useCase.RefrescarToken
 import com.gruposami.gruposamiapp.domain.servicio.model.Servicio
+import com.gruposami.gruposamiapp.ui.login.model.Comprobacion
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
 class FormularioServicioRepository @Inject constructor(
     private val formularioServicioService: FormularioServicioService,
     private val formularioServicioDao: FormularioServicioDao,
+    private val refrescarTokenUseCase: RefrescarToken,
 ) {
 
-    suspend fun remoteFormularioServicio() {
-        val formulariosServicio = formularioServicioService.getFormularioServicioService()
-        val formulariosServicioRelaciones = formularioServicioService.getFormularioServicioRelacionesService()
-
-        formulariosServicio.map {
-            insertarFormularioServicio(
-                FormularioServicio(
-                    it.idFormularioServicio, it.fase, it.titulo
-                ).toDatabase()
-            )
+    suspend fun remoteFormularioServicio(): FormularioServicioManagement {
+        return withContext(Dispatchers.IO) {
+            var formulariosServicioManagement = formularioServicioService.getFormularioServicioService()
+            if (formulariosServicioManagement.response != null) {
+                if (formulariosServicioManagement.response!!.code() == 401) {
+                    // Parece que el token de sesión a caducado.
+                    // Comprobar de nuevo el token de sesión.
+                    val refrescarToken: Comprobacion = refrescarTokenUseCase.invoke()
+                    formulariosServicioManagement.comprobacion = refrescarToken.booleano
+                    formulariosServicioManagement.mensaje = refrescarToken.mensaje!!
+                    if (refrescarToken.booleano) {
+                        formulariosServicioManagement = formularioServicioService.getFormularioServicioService()
+                    }
+                }
+            }
+            formulariosServicioManagement
         }
-        formulariosServicioRelaciones.map {
-            insertarFormularioServicio(
-                FormularioServicioRelaciones(
-                    it.idRelaciones, it.faseUno, it.faseDos, it.faseTres, it.faseCuatro, it.faseCinco
-                ).toDatabase()
-            )
+
+    }
+
+    suspend fun remoteFormularioServicioRelaciones(): FormularioServicioRelacionesManagement {
+        return withContext(Dispatchers.IO) {
+            var formulariosServicioRelacionesManagement = formularioServicioService.getFormularioServicioRelacionesService()
+            if (formulariosServicioRelacionesManagement.response != null) {
+                if (formulariosServicioRelacionesManagement.response!!.code() == 401) {
+                    // Parece que el token de sesión a caducado.
+                    // Comprobar de nuevo el token de sesión.
+                    val refrescarToken: Comprobacion = refrescarTokenUseCase.invoke()
+                    formulariosServicioRelacionesManagement.comprobacion = refrescarToken.booleano
+                    formulariosServicioRelacionesManagement.mensaje = refrescarToken.mensaje!!
+                    if (refrescarToken.booleano) {
+                        formulariosServicioRelacionesManagement = formularioServicioService.getFormularioServicioRelacionesService()
+                    }
+                }
+            }
+            formulariosServicioRelacionesManagement
         }
 
     }
@@ -42,7 +65,7 @@ class FormularioServicioRepository @Inject constructor(
         formularioServicioDao.insertarFormularioServicio(formularioServicioEntity)
     }
 
-    suspend fun insertarFormularioServicio(formularioServicioRelacionesEntity: FormularioServicioRelacionesEntity) {
+    suspend fun insertarFormularioServicioRelaciones(formularioServicioRelacionesEntity: FormularioServicioRelacionesEntity) {
         formularioServicioDao.insertarFormularioServicioRelacion(formularioServicioRelacionesEntity)
     }
 

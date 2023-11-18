@@ -2,6 +2,7 @@ package com.gruposami.gruposamiapp.data.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.gruposami.gruposamiapp.domain.orden.model.Orden
 import com.gruposami.gruposamiapp.domain.orden.model.OrdenEstado
@@ -30,7 +31,7 @@ fun Orden.toDatabase() = OrdenEntity(
     fechaModificacion = fechaModificacion,
 )
 
-@Entity(tableName = "orden_estado_table", primaryKeys = ["orden_id", "estado_id"])
+@Entity(tableName = "orden_estado_table", primaryKeys = ["orden_id", "estado_id"], indices = [Index(value = ["estado_id"])])
 data class OrdenEstadoEntity(
     @ColumnInfo(name = "orden_id") val ordenId: Int,
     @ColumnInfo(name = "estado_id") val estadoId: Int,

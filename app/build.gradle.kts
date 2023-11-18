@@ -71,6 +71,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     // Refrescar Pagina
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    // Glite
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     // Test
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

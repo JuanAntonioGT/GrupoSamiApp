@@ -1,7 +1,7 @@
 package com.gruposami.gruposamiapp.domain.multimedia.model
 
 import com.gruposami.gruposamiapp.data.database.entities.MultimediaEntity
-import com.gruposami.gruposamiapp.data.network.multimedia.model.MultimediaResponse
+import com.gruposami.gruposamiapp.data.network.orden.model.MultimediaResponse
 
 
 data class Multimedia(
@@ -16,7 +16,7 @@ data class Multimedia(
 
 )
 
-fun MultimediaResponse.toDomain(servicio_id: Int?) = Multimedia(
+fun MultimediaResponse.toDomain(servicioId: Int?) = Multimedia(
     id = id,
     ruta = ruta,
     tipoArchivo = tipoArchivo,

@@ -4,8 +4,10 @@ import com.gruposami.gruposamiapp.data.database.dao.ServicioDao
 import com.gruposami.gruposamiapp.data.database.entities.ServicioEntity
 import com.gruposami.gruposamiapp.data.database.entities.toDatabase
 import com.gruposami.gruposamiapp.domain.orden.model.CambioId
+import com.gruposami.gruposamiapp.domain.orden.model.OrdenEstado
 import com.gruposami.gruposamiapp.domain.servicio.model.Servicio
 import com.gruposami.gruposamiapp.domain.servicio.model.ServicioCompleto
+import com.gruposami.gruposamiapp.domain.servicio.model.ServicioEstado
 
 import com.gruposami.gruposamiapp.domain.servicio.model.ServicioMedido
 import com.gruposami.gruposamiapp.domain.servicio.model.ServicioMontado
@@ -19,6 +21,10 @@ class ServicioRepository @Inject constructor(
 
     suspend fun insertarServicioBBDD(servicio: Servicio) {
         servicioDao.insertarServicio(servicio.toDatabase())
+    }
+
+    suspend fun insertarServicioEstado(servicioEstado: ServicioEstado) {
+        servicioDao.insertarServicioEstado(servicioEstado.toDatabase())
     }
 
     suspend fun insertarServicioMedido(servicioMedido: ServicioMedido) {
@@ -49,6 +55,10 @@ class ServicioRepository @Inject constructor(
 
     suspend fun modificarServicioId(servicio: CambioId?) {
         servicioDao.modificarServicioId(servicio?.anteriorId, servicio?.nuevaId)
+    }
+
+    suspend fun eliminarServicio(servicioId: Int) {
+        servicioDao.eliminarServicio(servicioId)
     }
 
 }

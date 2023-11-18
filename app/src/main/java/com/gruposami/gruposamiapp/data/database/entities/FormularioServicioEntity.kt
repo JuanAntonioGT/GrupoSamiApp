@@ -23,7 +23,7 @@ fun FormularioServicio.toDatabase() = FormularioServicioEntity(
 @Entity(tableName = "formulario_servicio_relaciones_table")
 data class FormularioServicioRelacionesEntity(
     @PrimaryKey(autoGenerate = false)
-    @ColumnInfo(name = "idRelaciones") val idFormularioServicio: Int,
+    @ColumnInfo(name = "idRelaciones") val idRelaciones: Int,
     @ColumnInfo(name = "faseUno") var faseUno: Int?,
     @ColumnInfo(name = "faseDos") var faseDos: Int?,
     @ColumnInfo(name = "faseTres") var faseTres: Int?,
@@ -32,7 +32,7 @@ data class FormularioServicioRelacionesEntity(
 )
 
 fun FormularioServicioRelaciones.toDatabase() = FormularioServicioRelacionesEntity(
-    idFormularioServicio = idFormularioServicio,
+    idRelaciones = idRelaciones,
     faseUno = faseUno,
     faseDos = faseDos,
     faseTres = faseTres,

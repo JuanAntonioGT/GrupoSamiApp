@@ -14,12 +14,12 @@ import com.gruposami.gruposamiapp.domain.servicio.model.toDomain
 
 
 data class OrdenCompleta(
-    val orden: Orden?,
-    val cliente: Cliente?,
-    val direccion: List<Direccion?>?,
-    val contacto: List<Contacto?>?,
-    val estado: List<Estado?>?, // Revisar que sea el LAST ID
-    val servicioCompleto: List<ServicioCompleto?>,
+    val orden: Orden,
+    val cliente: Cliente,
+    val direccion: List<Direccion>,
+    val contacto: List<Contacto>,
+    val estado: List<Estado>, // Revisar que sea el LAST ID
+    val servicioCompleto: List<ServicioCompleto>,
     var horaMovil: String? = null,
 )
 
@@ -42,10 +42,10 @@ data class CambioId(
 )
 
 fun OrdenCompletaEntity.toDomain() = OrdenCompleta(
-    orden = ordenEntity?.toDomain(),
-    cliente = clienteEntity?.toDomain(),
-    direccion = direccionEntity.map { it?.toDomain() },
-    contacto = contactoEntity.map { it?.toDomain() },
-    estado = estadoEntity.map { it?.toDomain() },
-    servicioCompleto = servicioCompletoEntity.map { it?.toDomain() }
+    orden = ordenEntity!!.toDomain(),
+    cliente = clienteEntity!!.toDomain(),
+    direccion = direccionEntity.map { it!!.toDomain()  },
+    contacto = contactoEntity.map { it!!.toDomain() },
+    estado = estadoEntity.map { it!!.toDomain() },
+    servicioCompleto = servicioCompletoEntity.map { it!!.toDomain() }
 )

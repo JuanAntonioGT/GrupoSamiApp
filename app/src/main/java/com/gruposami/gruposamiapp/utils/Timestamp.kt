@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
 
-fun timestamp(): String? {
+fun timestamp(): String {
 
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
@@ -20,4 +20,3 @@ fun timestamp(): String? {
     }
 
 }
-

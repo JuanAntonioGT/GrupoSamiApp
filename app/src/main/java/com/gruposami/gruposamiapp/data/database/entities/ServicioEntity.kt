@@ -2,6 +2,7 @@ package com.gruposami.gruposamiapp.data.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.gruposami.gruposamiapp.domain.servicio.model.Servicio
 import com.gruposami.gruposamiapp.domain.servicio.model.ServicioEstado
@@ -108,7 +109,7 @@ fun Servicio.toDatabase() = ServicioEntity(
 )
 
 
-@Entity(tableName = "servicio_estado_table", primaryKeys = ["servicio_id", "estado_id"])
+@Entity(tableName = "servicio_estado_table", primaryKeys = ["servicio_id", "estado_id"], indices = [Index(value = ["estado_id"])])
 data class ServicioEstadoEntity(
     @ColumnInfo(name = "servicio_id") val servicioId: Int,
     @ColumnInfo(name = "estado_id") val estadoId: Int
@@ -119,7 +120,7 @@ fun ServicioEstado.toDatabase() = ServicioEstadoEntity(
     estadoId = estadoId,
 )
 
-@Entity(tableName = "servicio_medido_table", primaryKeys = ["servicio_id", "user_id"])
+@Entity(tableName = "servicio_medido_table", primaryKeys = ["servicio_id", "user_id"], indices = [Index(value = ["user_id"])])
 data class ServicioMedidoEntity(
     @ColumnInfo(name = "servicio_id") val servicioId: Int,
     @ColumnInfo(name = "user_id") val userId: Int,
@@ -131,7 +132,7 @@ fun ServicioMedido.toDatabase() = ServicioMedidoEntity(
 )
 
 
-@Entity(tableName = "servicio_montado_table", primaryKeys = ["servicio_id", "user_id"])
+@Entity(tableName = "servicio_montado_table", primaryKeys = ["servicio_id", "user_id"], indices = [Index(value = ["user_id"])])
 data class ServicioMontadoEntity(
     @ColumnInfo(name = "servicio_id") val servicioId: Int,
     @ColumnInfo(name = "user_id") val userId: Int,
@@ -142,7 +143,7 @@ fun ServicioMontado.toDatabase() = ServicioMontadoEntity(
     userId = userId
 )
 
-@Entity(tableName = "servicio_pendiente_table", primaryKeys = ["servicio_id", "user_id"])
+@Entity(tableName = "servicio_pendiente_table", primaryKeys = ["servicio_id", "user_id"], indices = [Index(value = ["user_id"])])
 data class ServicioPendienteEntity(
     @ColumnInfo(name = "servicio_id") val servicioId: Int,
     @ColumnInfo(name = "user_id") val userId: Int,

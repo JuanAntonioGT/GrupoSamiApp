@@ -19,12 +19,12 @@ class ContactoRepository @Inject constructor(
         contactoDao.insertarContacto(contacto.toDatabase())
     }
 
-    suspend fun eliminarContacto(id: Int) {
-        contactoDao.eliminarContacto(id)
-    }
-
     suspend fun modificarContactoId(contacto: CambioId) {
         contactoDao.modificarContactoId(contacto.anteriorId, contacto.nuevaId)
+    }
+
+    suspend fun eliminarContacto(id: Int) {
+        contactoDao.eliminarContacto(id)
     }
 
 //    suspend fun listaContactosLocales(clienteId: Int): List<Contacto> {

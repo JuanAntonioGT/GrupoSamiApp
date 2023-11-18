@@ -19,9 +19,15 @@ class EstadoRepository @Inject constructor(
         estadoDao.modificarEstadoId(servicio.anteriorId, servicio.nuevaId)
     }
 
-//
-//    suspend fun eliminarEstado(id: Int) {
-//        estadoDao.eliminarEstado(id)
-//    }
+    suspend fun eliminarEstado(estadoId: Int) {
+        estadoDao.eliminarEstado(estadoId)
+    }
 
+    suspend fun eliminarEstadoOrden(estadoId: Int) {
+        estadoDao.eliminarEstadoOrden(estadoId)
+    }
+
+    suspend fun eliminarEstadoServicio(estadoId: Int) {
+        estadoDao.eliminarEstadoServicio(estadoId)
+    }
 }

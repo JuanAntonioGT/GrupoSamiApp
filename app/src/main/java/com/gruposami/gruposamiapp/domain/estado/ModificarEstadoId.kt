@@ -9,8 +9,12 @@ class ModificarEstadoId @Inject constructor(
     private val estadoRepository: EstadoRepository,
 ) {
 
-    suspend operator fun invoke(estados: List<CambioId>) {
-        estados.map { estadoRepository.modificarEstadoId(it) }
+    suspend operator fun invoke(estados: List<CambioId?>) {
+        estados.map {
+            if (it != null) {
+                estadoRepository.modificarEstadoId(it)
+            }
+        }
     }
 
 }
