@@ -9,7 +9,7 @@ import javax.inject.Inject
 class ObtenerMultimedia @Inject constructor(
     private val multimediaRepository: MultimediaRepository
 ) {
-    suspend operator fun invoke(multimedia: Multimedia): Multimedia{
+    suspend operator fun invoke(multimedia: Multimedia): Multimedia {
         val response = multimediaRepository.obtenerMultimedia(multimedia)
         return if (response != null) {
             response.toDomain()

@@ -19,6 +19,10 @@ class FirmaRepository @Inject constructor(
         firmaDao.modificarDireccionId(cambio.anteriorId, cambio.nuevaId)
     }
 
+    suspend fun eliminarFirma(firma: Firma) {
+        firmaDao.eliminarFirma(firma.id!!)
+    }
+
 //    suspend fun obtenerFirma(id_firma: Int): Firma {
 //        val response: FirmaEntity = firmaDao.obtenerFirmaFiltrado(id_firma)
 //        return response.toDomain()

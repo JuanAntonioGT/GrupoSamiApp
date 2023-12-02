@@ -42,7 +42,7 @@ class OrdenService @Inject constructor(private val ordenApiClient: OrdenApiClien
             try {
                 // Añadir a la OrdenCompleta la hora del movil actualmente para que se hagan cálculo.
                 orden.horaMovil = timestamp()
-                val response = ordenApiClient.enviarOrden(orden.orden!!.id!!, orden)
+                val response = ordenApiClient.enviarOrden(orden.orden.id!!, orden)
 
                 OrdenManagementEnviar(true, "Correcto", response)
             } catch (e: ConnectException) {

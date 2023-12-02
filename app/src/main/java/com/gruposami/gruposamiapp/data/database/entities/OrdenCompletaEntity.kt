@@ -44,10 +44,10 @@ data class OrdenCompletaEntity(
 )
 
 fun OrdenCompleta.toDatabase() = OrdenCompletaEntity(
-    ordenEntity = orden?.toDatabase(),
-    clienteEntity = cliente?.toDatabase(),
-    direccionEntity = direccion?.map { it?.toDatabase() } ?: emptyList(),
-    contactoEntity = contacto?.map { it?.toDatabase() } ?: emptyList(),
-    estadoEntity =  estado?.map { it?.toDatabase() } ?: emptyList(),
-    servicioCompletoEntity = servicioCompleto.map { it?.toDatabase() }
+    ordenEntity = orden.toDatabase(),
+    clienteEntity = cliente.toDatabase(),
+    direccionEntity = direccion.map { it.toDatabase() },
+    contactoEntity = contacto.map { it.toDatabase() },
+    estadoEntity = estado.map { it.toDatabase() },
+    servicioCompletoEntity = servicioCompleto.map { it.toDatabase() }
 )

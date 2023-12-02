@@ -26,7 +26,8 @@ import javax.inject.Singleton
 object NetworkModule {
 
     // DESARROLLO
-    private const val SERVER_IP = "10.0.2.2"
+//    private const val SERVER_IP = "10.0.2.2"
+    private const val SERVER_IP = "192.168.1.150"
     private const val PUERTO = "8000"
 
     // PRODUCCION

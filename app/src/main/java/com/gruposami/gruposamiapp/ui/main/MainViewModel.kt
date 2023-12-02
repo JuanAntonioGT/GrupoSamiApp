@@ -109,10 +109,13 @@ class MainViewModel @Inject constructor(
 
 //                if (!flagMedir || !flagMedido || !flagMontar || !flagMontado) {
                     // Si no he encontrado nada en los servicios, buscar en el último estado de la orden
-                if (servicioCompleto.estado.last()?.estado.equals("Medir")) flagMedir = true
-                if (servicioCompleto.estado.last()?.estado.equals("Medido")) flagMedido = true
-                if (servicioCompleto.estado.last()?.estado.equals("Montar")) flagMontar = true
-                if (servicioCompleto.estado.last()?.estado.equals("Montado")) flagMontado = true
+                if (servicioCompleto.estado.isNotEmpty()){
+                    if (servicioCompleto.estado.last()?.estado.equals("Medir")) flagMedir = true
+                    if (servicioCompleto.estado.last()?.estado.equals("Medido")) flagMedido = true
+                    if (servicioCompleto.estado.last()?.estado.equals("Montar")) flagMontar = true
+                    if (servicioCompleto.estado.last()?.estado.equals("Montado")) flagMontado = true
+                }
+
 //                }
 
             }

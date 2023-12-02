@@ -86,8 +86,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun comprobarPermisos() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-            PackageManager.PERMISSION_GRANTED
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
         ) {
             // El permiso ya ha sido otorgado
             Log.i("LoginActivity", "Ya tienes permiso de internet")

@@ -7,7 +7,7 @@ import javax.inject.Inject
 class ObtenerListaServicioCompleto @Inject constructor(
     private val servicioRepository: ServicioRepository,
 ) {
-    suspend operator fun invoke(orden_id: Int): List<ServicioCompleto>{
-        return servicioRepository.obtenerServicioPorOrden(orden_id)
+    suspend operator fun invoke(ordenId: Int): List<ServicioCompleto> {
+        return servicioRepository.obtenerServicioPorOrden(ordenId)
     }
 }

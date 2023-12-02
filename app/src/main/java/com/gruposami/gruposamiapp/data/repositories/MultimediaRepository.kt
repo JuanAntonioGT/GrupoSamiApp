@@ -46,4 +46,8 @@ class MultimediaRepository @Inject constructor(
         multimediaDao.modificarMultimediaId(cambio.anteriorId, cambio.nuevaId)
     }
 
+    suspend fun eliminarMultimedia(multimedia: Multimedia) {
+        multimediaDao.eliminarMultimedia(multimedia.id!!)
+    }
+
 }

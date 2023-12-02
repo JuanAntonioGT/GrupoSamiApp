@@ -15,6 +15,9 @@ interface FirmaDao {
     @Query("UPDATE firma_table SET id_firma = :nuevaId where id_firma = :anteriorId ")
     suspend fun modificarDireccionId(anteriorId: Int, nuevaId: Int)
 
+    @Query("DELETE FROM firma_table where id_firma = :id ")
+    suspend fun eliminarFirma(id: Int)
+
 //    @Query("SELECT * FROM firma_table where id_firma = :id_firma ")
 //    suspend fun obtenerFirmaFiltrado(id_firma: Int): FirmaEntity
 

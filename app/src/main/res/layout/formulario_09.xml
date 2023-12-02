@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@android:drawable/divider_horizontal_textfield"
+            android:dividerPadding="5dp"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            android:showDividers="middle|beginning|end">
+
+            <TextView
+                android:id="@+id/textView124"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="Selecciona la Manufactura"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/checkBoxf50051"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cantos Pulidos"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkBoxf50052"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Esquinas Matadas"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="5dp"
+                android:text="Mas opciones"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/linearMasOpciones"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView128"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#6FD2FF"
+                    android:text="Cantos Pulidos"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:id="@+id/linearlayoutcantopulido"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@android:drawable/divider_horizontal_textfield"
+                    android:orientation="vertical"
+                    android:showDividers="middle|beginning|end|none">
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf50054"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Canto Pulido Indrustrial"
+                        android:textColor="#000000" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox61"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Encaja" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/dibujocantopulido"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF">
+
+                        <TextView
+                            android:id="@+id/textView127"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Especifica los lados pulidos"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox62"
+                            style="@android:style/Widget.CompoundButton.CheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:text="Canto \nPulido"
+                            android:textColorLink="#000000"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/constraintLayout1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView127" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox63"
+                            style="@android:style/Widget.CompoundButton.CheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:text="Canto \nPulido"
+                            android:textColorLink="#000000"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/constraintLayout1"
+                            app:layout_constraintTop_toBottomOf="@+id/textView127" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox64"
+                            style="@android:style/Widget.CompoundButton.CheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Canto Pulido"
+                            android:textColorLink="#000000"
+                            app:layout_constraintBottom_toTopOf="@+id/constraintLayout1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView127" />
+
+                        <CheckBox
+                            android:id="@+id/checkBox65"
+                            style="@android:style/Widget.CompoundButton.CheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Canto Pulido"
+                            android:textColorLink="#000000"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/constraintLayout1" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout1"
+                            android:layout_width="196dp"
+                            android:layout_height="72dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:background="#E6F2F8"
+                            app:layout_constraintBottom_toTopOf="@+id/checkBox65"
+                            app:layout_constraintEnd_toStartOf="@+id/checkBox63"
+                            app:layout_constraintStart_toEndOf="@+id/checkBox62"
+                            app:layout_constraintTop_toBottomOf="@+id/checkBox64">
+
+                            <TextView
+                                android:id="@+id/textView230"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Medida Largo"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView231"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="Ancho"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView232"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="Ancho"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView233"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="Medida Largo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView129"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#6FD2FF"
+                    android:text="Curvas"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:id="@+id/linearlayoutCurvas"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf50053"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Esquinas Milla" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 4 Curvas de :"
+                            android:textColor="#000000" />
+
+                        <EditText
+                            android:id="@+id/editTextf50051"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="numberDecimal"
+                            android:textColor="#000000" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/dibujoCurvas"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF">
+
+                        <TextView
+                            android:id="@+id/textView134"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="Especifica las curvas del vidrio"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal10"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal10"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="20dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal11"
+                            app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+                            app:layout_constraintTop_toBottomOf="@+id/textView134" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal11"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="5dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+                            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal10" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal12"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="5dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+                            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal13" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal13"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="20dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal12"
+                            app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+                            app:layout_constraintTop_toBottomOf="@+id/textView134" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout2"
+                            android:layout_width="196dp"
+                            android:layout_height="72dp"
+                            android:background="#E6F2F8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView134">
+
+                            <TextView
+                                android:id="@+id/textView330"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Medida Largo"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView331"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="Ancho"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView332"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="Ancho"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView333"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="Medida Largo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView135"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#6FD2FF"
+                    android:text="Bisel"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutBisel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" 4 Lados Biselados de :" />
+
+                        <EditText
+                            android:id="@+id/editTextf50053"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            android:textColor="#000000" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/dibujoBisel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF">
+
+                        <TextView
+                            android:id="@+id/textView136"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Especifica los lados biselados"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout4"
+                            android:layout_width="196dp"
+                            android:layout_height="72dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:background="#E6F2F8"
+                            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal17"
+                            app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal15"
+                            app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal14"
+                            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal16">
+
+                            <TextView
+                                android:id="@+id/textView130"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Medida Largo"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView131"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="Ancho"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView132"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="Ancho"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView133"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="Medida Largo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal14"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/constraintLayout4"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView136" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal15"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
+                            app:layout_constraintTop_toBottomOf="@+id/textView136" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal16"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
+                            app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal15"
+                            app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal14"
+                            app:layout_constraintTop_toBottomOf="@+id/textView136" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal17"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textViewesquinascortadas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#6FD2FF"
+                    android:text="Esquinas Cortadas"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp" />
+
+                <LinearLayout
+                    android:id="@+id/linearlayoutEsquinasCortadas"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/dibujoEsquinasCortadas"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout3"
+                            android:layout_width="196dp"
+                            android:layout_height="72dp"
+                            android:layout_marginTop="60dp"
+                            android:layout_marginBottom="60dp"
+                            android:background="#E6F2F8"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView236">
+
+                            <TextView
+                                android:id="@+id/textView150"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Medida Largo"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView151"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="Ancho"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView152"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="Ancho"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView153"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="Medida Largo"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textView236"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Especifica los lados Cortados"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal18"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toTopOf="@id/constraintLayout3"
+                            app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal20"
+                            app:layout_constraintTop_toBottomOf="@+id/textView236"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal19"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="5dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toTopOf="@id/constraintLayout3"
+                            app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal25"
+                            app:layout_constraintTop_toBottomOf="@+id/textView236"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal20"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="4dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal21"
+                            app:layout_constraintEnd_toStartOf="@id/constraintLayout3"
+                            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal21"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:layout_marginEnd="4dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal2"
+                            app:layout_constraintEnd_toStartOf="@id/constraintLayout3"
+                            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal20" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal22"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal21"
+                            app:layout_constraintTop_toBottomOf="@id/constraintLayout3"
+                            app:layout_constraintVertical_bias="0.4" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal23"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="5dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal24"
+                            app:layout_constraintTop_toBottomOf="@id/constraintLayout3"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal24"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="1dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintStart_toEndOf="@id/constraintLayout3"
+                            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal25" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal25"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="3dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal24"
+                            app:layout_constraintStart_toEndOf="@id/constraintLayout3"
+                            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal3" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal"
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="6dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal20"
+                            app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal18"
+                            app:layout_constraintTop_toBottomOf="@+id/textView236"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal2"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="7dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal22"
+                            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal21" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal3"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal25"
+                            app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal19"
+                            app:layout_constraintTop_toBottomOf="@+id/textView236" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberDecimal4"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginBottom="3dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal23"
+                            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal24"
+                            app:layout_constraintVertical_bias="0.0" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/checkBoxVidrioCircular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vidrio Circular" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf50058"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Templado"
+                        android:textColor="#000000" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf500515"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Plantilla "
+                        android:textColor="#000000" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf500516"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vidrio con forma o cajas"
+                        android:textColor="#000000" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf500510"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Uva"
+                        android:textColor="#000000" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf50059"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Muecas"
+                        android:textColor="#000000" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf500511"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pecho Paloma"
+                        android:textColor="#000000" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkBoxf50056"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Taladros"
+                            android:textColor="#000000" />
+
+                        <EditText
+                            android:id="@+id/editTextf50052"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:hint="¿Cuantos taladros y de cúantos cm?"
+                            android:inputType="numberDecimal"
+                            android:textColor="#000000" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkBox12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:text="2 Parrilas de" />
+
+                        <EditText
+                            android:id="@+id/editTextTextPersonName2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:hint=" X cms"
+                            android:inputType="textPersonName" />
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf500512"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Silicona Estructural de Sellado - Muro Cortina"
+                        android:textColor="#000000" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf500513"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Silicona Estructural de Pegado - Muro Cortina"
+                        android:textColor="#000000" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf500514"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Silicona Sellado Neutro para Formar Doble Acristalamiento"
+                        android:textColor="#000000" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/checkBoxf500518"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Informacion Adicional:" />
+
+                        <EditText
+                            android:id="@+id/editTextf50055"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:inputType="textPersonName" />
+                    </LinearLayout>
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/checkBoxf500517"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <EditText
+                                android:id="@+id/editTextf50054"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="¿Has recogido alguna pieza?"
+                                android:inputType="textPersonName" />
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView109"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="DECORACION"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxf500519"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Arena"
+                    android:textColor="#000000" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxf500520"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Acido"
+                    android:textColor="#000000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkBoxf500521"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pintura"
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:id="@+id/editTextTextPersonName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="¿Sabes el color o numeracion RAL?"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/checkBoxf500522"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Talla"
+                    android:textColor="#000000" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxf500523"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vinilo para espejos"
+                    android:textColor="#000000" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxf500524"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rotulacion"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/botonAtras"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/atras"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/botonCancelar"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cancelar"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/botonSiguiente"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/siguiente"
+            android:textColor="#000000" />
+    </LinearLayout>
+</LinearLayout>

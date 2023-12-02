@@ -49,8 +49,6 @@ data class Servicio(
     var estadoId: Int?,
     var ordenId: Int?,
     var faseFormulario: Int?,
-//    var multimedias: List<Multimedia>,
-//    var firmas: List<Firma>,
 )
 
 fun ServicioResponse.toDomain() = Servicio(
@@ -101,9 +99,6 @@ fun ServicioResponse.toDomain() = Servicio(
     estadoId = estado?.id,
     ordenId = ordenId,
     faseFormulario = null
-//    multimedias = multimedia.map { it!!.toDomain(id) },
-//    firmas = firma.map { it!!.toDomain(id) },
-
 )
 
 fun ServicioEntity.toDomain() = Servicio(

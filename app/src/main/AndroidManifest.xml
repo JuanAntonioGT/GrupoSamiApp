@@ -32,9 +32,7 @@
         android:theme="@style/Theme.GrupoSamiApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="34">
-        <activity
-            android:name=".ui.formulario.FormularioActivity"
-            android:exported="false" />
+
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true">
@@ -50,6 +48,12 @@
         <activity
             android:name=".ui.orden.OrdenActivity"
             android:exported="true" />
+        <activity
+            android:name=".ui.firma.FirmaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.formulario.FormularioActivity"
+            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

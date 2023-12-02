@@ -39,8 +39,8 @@ class ServicioRepository @Inject constructor(
         servicioDao.insertarServicioPendiente(servicioPendiente.toDatabase())
     }
 
-    suspend fun obtenerServicioPorOrden(orden_id: Int): List<ServicioCompleto> {
-        val response = servicioDao.obtenerServiciosPorOrden(orden_id)
+    suspend fun obtenerServicioPorOrden(ordenId: Int): List<ServicioCompleto> {
+        val response = servicioDao.obtenerServiciosPorOrden(ordenId)
         return response.map { it.toDomain() }
     }
 

@@ -17,7 +17,7 @@ data class Orden(
 
 fun OrdenResponse.toDomain() = Orden(
     id = id,
-    clienteId = clienteResponse!!.id,
+    clienteId = clienteResponse?.id,
     codigoReferencia = codigoReferencia,
     numeroReferencia = numeroReferencia,
     comentario = comentario,

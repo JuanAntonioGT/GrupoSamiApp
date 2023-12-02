@@ -13,6 +13,8 @@ import com.gruposami.gruposamiapp.domain.servicio.model.ServicioCompleto
 import com.gruposami.gruposamiapp.domain.sesion.model.Sesion
 import com.gruposami.gruposamiapp.ui.formulario.FormularioActivity
 import com.gruposami.gruposamiapp.ui.orden.OrdenViewModel
+import com.gruposami.gruposamiapp.utils.NuevaFotografia
+import com.gruposami.gruposamiapp.utils.NuevoVideo
 
 
 class ServicioViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -98,14 +100,14 @@ class ServicioViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // en la que no quiero que se pueda interactuar con el usuario y solo salga la información y punto
         if (mostrarMenus) {
             // Poner un if si vengo para medir o para montar y dedicarle un formulario nuevo
-            if (estadoActual == "Medir" || estadoActual == "Medido"){
+            if (estadoActual == "Medir" || estadoActual == "Medido") {
                 when (servicio.servicio.medido) {
                     null -> menuNull(servicio.servicio)
                     false -> menuFalse(servicio.servicio)
                     true -> menuTrue(servicio.servicio, ordenViewModel!!)
                 }
             }
-            if (estadoActual == "Montar" || estadoActual == "Montado"){
+            if (estadoActual == "Montar" || estadoActual == "Montado") {
                 when (servicio.servicio.montado) {
                     null -> menuNull(servicio.servicio)
                     false -> menuFalse(servicio.servicio)
@@ -164,10 +166,25 @@ class ServicioViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             builder.setTitle("")
             builder.setItems(charSequences) { _, selected_option ->
                 when (selected_option) {
-//                    0 -> MultimediaUtils().fotografia(itemView, servicio, "Complementaria", ordenViewModel)
-//                    1 -> MultimediaUtils().video(itemView, servicio, "Complementaria", ordenViewModel)
-//                    2 -> MultimediaUtils().fotografia(itemView, servicio, "Desperfectos", ordenViewModel)
-//                    3 -> MultimediaUtils().video(itemView, servicio, "Desperfectos", ordenViewModel)
+                    0 -> {
+                        val nuevoMedia = NuevaFotografia(itemView, servicio, "Complementaria")
+                        ordenViewModel.insertarImagen(nuevoMedia)
+                    }
+
+                    1 -> {
+                        val nuevoMedia = NuevoVideo(itemView, servicio, "Complementaria")
+                        ordenViewModel.insertarImagen(nuevoMedia)
+                    }
+
+                    2 -> {
+                        val nuevoMedia = NuevaFotografia(itemView, servicio, "Desperfectos")
+                        ordenViewModel.insertarImagen(nuevoMedia)
+                    }
+
+                    3 -> {
+                        val nuevoMedia = NuevoVideo(itemView, servicio, "Desperfectos")
+                        ordenViewModel.insertarImagen(nuevoMedia)
+                    }
                 }
             }
             builder.show()

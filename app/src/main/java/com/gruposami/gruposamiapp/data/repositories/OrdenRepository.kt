@@ -78,6 +78,10 @@ class OrdenRepository @Inject constructor(
         return response.map { it.toDomain() }
     }
 
+    suspend fun obtenerOrdenPorId(ordenId: Int): Orden {
+        return ordenDao.obtenerOrdenPorId(ordenId).toDomain()
+    }
+
     suspend fun obtenerOrdenesPorEstado(estado: String): List<OrdenCompleta> {
         val response = ordenDao.obtenerOrdenPorEstado(estado)
         return if (response.isNotEmpty()){
@@ -95,4 +99,6 @@ class OrdenRepository @Inject constructor(
     suspend fun eliminarOrdenes() {
         ordenDao.eliminarOrdenes()
     }
+
+
 }

@@ -2,6 +2,7 @@ package com.gruposami.gruposamiapp.ui.orden.adapters
 
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
 import android.text.InputFilter
 import android.text.InputType
@@ -20,9 +21,9 @@ import com.gruposami.gruposamiapp.domain.orden.model.OrdenCompleta
 import com.gruposami.gruposamiapp.domain.servicio.model.Servicio
 import com.gruposami.gruposamiapp.domain.servicio.model.ServicioCompleto
 import com.gruposami.gruposamiapp.domain.sesion.model.Sesion
+import com.gruposami.gruposamiapp.ui.firma.FirmaActivity
 import com.gruposami.gruposamiapp.ui.orden.OrdenViewModel
 import com.gruposami.gruposamiapp.utils.timestamp
-import okhttp3.internal.notifyAll
 
 
 class OrdenViewHolder(view: View) :
@@ -217,8 +218,9 @@ class OrdenViewHolder(view: View) :
 //        var listaServicios = orden.servicioCompleto.sortedByDescending { it.estado.last()?.estado == Sesion.filtroEstado }
         var listaServicios = orden.servicioCompleto.filter { it.estado.last()?.estado == Sesion.filtroEstado }
         listaServicios = listaServicios.toMutableList()
+//        println("La lista de servicios tiene ${listaServicios.size} servicios.")
 
-        val adapterServicios = ServicioAdapter(listaServicios,true,ordenViewModel)
+        val adapterServicios = ServicioAdapter(listaServicios, true, ordenViewModel)
         binding.recyclerViewServicios.adapter = adapterServicios
         binding.recyclerViewServicios.layoutManager = LinearLayoutManager(itemView.context)
         binding.recyclerViewServicios.itemAnimator = DefaultItemAnimator()
@@ -316,34 +318,33 @@ class OrdenViewHolder(view: View) :
 
         }
 
-//        // Boton de Firma. Si está to do firmado, no saldrá nuevamente. Si faltan firmas, saldrá.
-//        var comprobarFirmas = false
-//        var palabraBuscar = ""
-//        if (Sesion.filtro_estado == "Medir" || Sesion.filtro_estado == "Medido") {
-//            palabraBuscar = "Medicion"
-//        } else {
-//            palabraBuscar = "Instalacion"
-//        }
-//
-//        for (servicio in listaServicios) {
-//            for (firma in servicio.firma){
-//                if (!firma!!.tipo_firma.equals(palabraBuscar)){
-//                    comprobarFirmas = true
-//                }
-//            }
-//
-//        }
+        // Boton de Firma. Si está to do firmado, no saldrá nuevamente. Si faltan firmas, saldrá.
+        var comprobarFirmas = false
+        var palabraBuscar = ""
+        palabraBuscar = if (Sesion.filtroEstado == "Medir" || Sesion.filtroEstado == "Medido") {
+            "Medicion"
+        } else {
+            "Instalacion"
+        }
 
-//        if (comprobarFirmas) {
-//            binding.botonFinalizarFirmar.visibility = View.VISIBLE
-//            binding.botonFinalizarFirmar.setOnClickListener {
-//                val intent = Intent(itemView.context, FirmaActivity::class.java)
-//                intent.putExtra("orden_id", orden.orden!!.id)
-//                itemView.context.startActivity(intent)
-//            }
-//        } else {
-//            binding.botonFinalizarFirmar.visibility = View.GONE
-//        }
+        for (servicio in listaServicios) {
+            for (firma in servicio.firma) {
+                if (firma != null) {
+                    if (firma.tipoFirma == palabraBuscar) comprobarFirmas = true
+                }
+            }
+        }
+
+        if (comprobarFirmas) {
+            binding.botonFinalizarFirmar.visibility = View.VISIBLE
+            binding.botonFinalizarFirmar.setOnClickListener {
+                val intent = Intent(itemView.context, FirmaActivity::class.java)
+                intent.putExtra("orden_id", orden.orden.id)
+                itemView.context.startActivity(intent)
+            }
+        } else {
+            binding.botonFinalizarFirmar.visibility = View.GONE
+        }
 
     }
 

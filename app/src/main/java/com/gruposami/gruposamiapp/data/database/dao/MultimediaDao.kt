@@ -28,4 +28,7 @@ interface MultimediaDao {
     @Query("SELECT * FROM multimedia_table where id_multimedia=:idMultimedia")
     suspend fun obtenerMultimediaPorId(idMultimedia: Int): MultimediaEntity
 
+    @Query("DELETE FROM multimedia_table where id_multimedia =:id ")
+    suspend fun eliminarMultimedia(id: Int)
+
 }

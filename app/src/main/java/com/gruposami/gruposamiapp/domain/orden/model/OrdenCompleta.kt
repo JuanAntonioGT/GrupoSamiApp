@@ -43,7 +43,7 @@ data class CambioId(
 
 fun OrdenCompletaEntity.toDomain() = OrdenCompleta(
     orden = ordenEntity!!.toDomain(),
-    cliente = clienteEntity!!.toDomain(),
+    cliente = clienteEntity?.toDomain() ?: Cliente(0, null, null, null, null, null, null),
     direccion = direccionEntity.map { it!!.toDomain()  },
     contacto = contactoEntity.map { it!!.toDomain() },
     estado = estadoEntity.map { it!!.toDomain() },

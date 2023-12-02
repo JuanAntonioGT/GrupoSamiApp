@@ -77,7 +77,7 @@ class SincronizacionDatos @Inject constructor(
 
                 // Y que se borre el resto de elementos de al app
             } else {
-                println("Contiene la orden local: ${local.orden}")
+//                println("Contiene la orden local: ${local.orden}")
                 // Seguir comprobando elementos
                 val clientesRemotos = remoteDataSource.map { it.clienteResponse }
                 val estadosRemotos = remoteDataSource.map { it.estado }
@@ -88,14 +88,14 @@ class SincronizacionDatos @Inject constructor(
                     for (clienteRemoto in clientesRemotos) {
                         for (direccionRemota in clienteRemoto!!.direccionSet) {
                             if (direccionLocal.id == direccionRemota!!.id) {
-                                println("La dirección aparece en el listado remoto")
+                                // println("La dirección aparece en el listado remoto")
                                 flagDireccion = false
                             }
                         }
                     }
 
                     if (flagDireccion) {
-                        println("La direccion NO aparece en el listado remoto. Eliminar ->")
+//                        println("La direccion NO aparece en el listado remoto. Eliminar ->")
                         eliminarDireccion.invoke(direccionLocal.id)
                     }
                 }
@@ -105,14 +105,14 @@ class SincronizacionDatos @Inject constructor(
                     for (clienteRemoto in clientesRemotos) {
                         for (contactoRemota in clienteRemoto!!.contactoSet) {
                             if (contactoLocal.id == contactoRemota!!.id) {
-                                println("El contacto aparece en el listado remoto")
+//                                println("El contacto aparece en el listado remoto")
                                 flagContacto = false
                             }
                         }
                     }
 
                     if (flagContacto) {
-                        println("El contacto NO aparece en el listado remoto. Eliminar ->")
+//                        println("El contacto NO aparece en el listado remoto. Eliminar ->")
                         eliminarContacto.invoke(contactoLocal.id)
                     }
                 }
@@ -121,14 +121,14 @@ class SincronizacionDatos @Inject constructor(
                     var flagEstado = true
                     for (estadoRemoto in estadosRemotos) {
                         if (estadoLocal.id == estadoRemoto!!.id) {
-                            println("El estado aparece en el listado remoto")
+//                            println("El estado aparece en el listado remoto")
                             flagEstado = false
                         }
 
                     }
 
                     if (flagEstado) {
-                        println("El estado NO aparece en el listado remoto. Eliminar ->")
+//                        println("El estado NO aparece en el listado remoto. Eliminar ->")
                         eliminarEstadoOrden.invoke(estadoLocal.id)
                     }
                 }
@@ -138,13 +138,13 @@ class SincronizacionDatos @Inject constructor(
                     for (servicioResponseRemoto in serviciosResponseRemotos) {
                         for (servicioRemoto in servicioResponseRemoto)
                             if (servicioLocal.servicio.id == servicioRemoto!!.id) {
-                                println("El servicio aparece en el listado remoto")
+//                                println("El servicio aparece en el listado remoto")
                                 flagServicio = false
                             }
                     }
 
                     if (flagServicio) {
-                        println("El servicio NO aparece en el listado remoto. Eliminar ->")
+//                        println("El servicio NO aparece en el listado remoto. Eliminar ->")
                         eliminarServicioCompleto.invoke(servicioLocal)
                     }
                 }
