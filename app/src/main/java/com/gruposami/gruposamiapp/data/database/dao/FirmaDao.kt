@@ -13,7 +13,7 @@ interface FirmaDao {
     suspend fun insertarFirma(firma: FirmaEntity)
 
     @Query("UPDATE firma_table SET id_firma = :nuevaId where id_firma = :anteriorId ")
-    suspend fun modificarDireccionId(anteriorId: Int, nuevaId: Int)
+    suspend fun modificarFirmaId(anteriorId: Int, nuevaId: Int)
 
     @Query("DELETE FROM firma_table where id_firma = :id ")
     suspend fun eliminarFirma(id: Int)

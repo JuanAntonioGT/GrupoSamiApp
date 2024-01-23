@@ -27,8 +27,12 @@ object NetworkModule {
 
     // DESARROLLO
 //    private const val SERVER_IP = "10.0.2.2"
-    private const val SERVER_IP = "192.168.1.150"
-    private const val PUERTO = "8000"
+//    private const val PUERTO = "8000"
+//    private const val SERVER_IP = "192.168.1.101"
+//    private const val PUERTO = "80"
+//    private const val SERVER_IP = "46.27.142.153"
+    private const val SERVER_IP = "79.145.16.222" // SAMI MOVISTAR
+    private const val PUERTO = "80"
 
     // PRODUCCION
     // private const val SERVER_IP = "servidor001.hopto.org"

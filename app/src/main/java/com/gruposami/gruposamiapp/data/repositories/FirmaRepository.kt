@@ -3,12 +3,16 @@ package com.gruposami.gruposamiapp.data.repositories
 
 import com.gruposami.gruposamiapp.data.database.dao.FirmaDao
 import com.gruposami.gruposamiapp.data.database.entities.toDatabase
+import com.gruposami.gruposamiapp.data.network.multimedia.MultimediaService
 import com.gruposami.gruposamiapp.domain.firma.model.Firma
+import com.gruposami.gruposamiapp.domain.multimedia.model.Multimedia
+import com.gruposami.gruposamiapp.domain.multimedia.model.toDomain
 import com.gruposami.gruposamiapp.domain.orden.model.CambioId
 import javax.inject.Inject
 
 class FirmaRepository @Inject constructor(
-    private val firmaDao: FirmaDao
+    private val firmaDao: FirmaDao,
+    private val multimediaRepository: MultimediaRepository,
 ) {
 
     suspend fun insertarFirma(firma: Firma) {
@@ -16,7 +20,12 @@ class FirmaRepository @Inject constructor(
     }
 
     suspend fun modificarFirmaId(cambio: CambioId) {
-        firmaDao.modificarDireccionId(cambio.anteriorId, cambio.nuevaId)
+        val multimedia = multimediaRepository.obtenerMultimediaId(cambio.anteriorId)
+        if (multimedia != null) {
+            multimediaRepository.enviarMultimedia(multimedia, cambio.nuevaId)
+        }
+
+        firmaDao.modificarFirmaId(cambio.anteriorId, cambio.nuevaId)
     }
 
     suspend fun eliminarFirma(firma: Firma) {

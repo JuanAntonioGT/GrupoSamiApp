@@ -106,6 +106,7 @@ class FirmaActivity : AppCompatActivity() {
                         servicioId = serv.id,
                     )
                     this.firmaViewModel.insertarFirma(firma)
+                    this.firmaViewModel.insertarImagen(multimediaFirma)
 
                 }
             }

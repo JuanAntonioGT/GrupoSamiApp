@@ -17,7 +17,7 @@ class MultimediaRepository @Inject constructor(
     // Remote
     suspend fun enviarMultimedia(multimedia: Multimedia, nuevaId: Int) {
         val response = multimediaService.enviarMultimedia(multimedia, nuevaId)
-        println(response)
+        println("Response de enviar multimedia $response")
     }
 
     // Local
@@ -34,14 +34,22 @@ class MultimediaRepository @Inject constructor(
         )
     }
 
-    suspend fun obtenerMultimediaId(id_multimedia: Int): Multimedia {
-        return multimediaDao.obtenerMultimediaPorId(id_multimedia).toDomain()
+    suspend fun obtenerMultimediaId(id_multimedia: Int): Multimedia? {
+        val multimediaResponse = multimediaDao.obtenerMultimediaPorId(id_multimedia)
+        if (multimediaResponse != null) {
+            return multimediaResponse.toDomain()
+        } else {
+            return null
+        }
+
     }
 
     suspend fun modificarMultimediaId(cambio: CambioId) {
         // Cargar un modelo
         val multimedia = obtenerMultimediaId(cambio.anteriorId)
-        enviarMultimedia(multimedia, cambio.nuevaId)
+        if (multimedia != null) {
+            enviarMultimedia(multimedia, cambio.nuevaId)
+        }
 
         multimediaDao.modificarMultimediaId(cambio.anteriorId, cambio.nuevaId)
     }
