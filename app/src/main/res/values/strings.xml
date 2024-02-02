@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GrupoSamiApp</string>
+    <string name="app_name">Grupo Sami 1980 App</string>
 
     <!--== LoginActivity  ==-->
     <string name="hint_user">Usuario</string>

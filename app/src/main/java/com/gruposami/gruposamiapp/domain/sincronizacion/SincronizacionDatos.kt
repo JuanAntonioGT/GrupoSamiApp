@@ -14,6 +14,7 @@ import com.gruposami.gruposamiapp.domain.orden.model.OrdenCompleta
 import com.gruposami.gruposamiapp.domain.orden.model.toDomain
 import com.gruposami.gruposamiapp.domain.servicio.EliminarServicioCompleto
 import javax.inject.Inject
+import kotlin.NullPointerException
 
 class SincronizacionDatos @Inject constructor(
     private val obtenerOrdenesLocal: ObtenerOrdenesLocal,
@@ -28,7 +29,7 @@ class SincronizacionDatos @Inject constructor(
     private val eliminarServicioCompleto: EliminarServicioCompleto,
 ) {
 
-    suspend operator fun invoke() {
+    suspend operator fun invoke(): String {
         /**
          * Nueva instrucción:
          * El móvil iniciará la petición de información pero antes comprobará si tiene cobertura
@@ -53,9 +54,20 @@ class SincronizacionDatos @Inject constructor(
         // 2º Paso
         val ordenRemoteManagement = obtenerOrdenesRemote.invoke()
 
+        var mensaje = "Correcto"
         // 3º Paso
-        compararListas(localDataSource, ordenRemoteManagement.response?.body()!!)
-
+        try {
+            if (localDataSource.isNotEmpty() && !ordenRemoteManagement.response?.body().isNullOrEmpty()){
+                compararListas(localDataSource, ordenRemoteManagement.response?.body()!!)
+            } else {
+                mensaje = "Error al sincronizar los datos."
+            }
+        } catch (e: NullPointerException){
+            mensaje = "Error sincronizando los datos. Codigo error 02. $e"
+        } catch (e: Exception){
+            mensaje = "Error sincronizando los datos. Codigo error 01. $e"
+        }
+        return mensaje
     }
 
     private suspend fun compararListas(localDataSource: List<OrdenCompleta>, remoteDataSource: List<OrdenResponse>) {

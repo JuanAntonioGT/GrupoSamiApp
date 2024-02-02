@@ -15,7 +15,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.ConnectException
+import java.net.SocketTimeoutException
 import javax.inject.Inject
+import kotlin.math.sin
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -66,13 +68,21 @@ class MainViewModel @Inject constructor(
     fun compararHora() {
         // ¿Comparar la hora para mandar a reajustarla?
     }
+
     fun sincronizarOrdenes() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 try {
                     isLoading.postValue(true)
-                    sincronizacionDatosUseCase.invoke()
-                } finally {
+                    val sincronizacion  = sincronizacionDatosUseCase.invoke()
+                    if (sincronizacion != "Correcto") {
+                        mensajeFlotante.postValue(sincronizacion)
+                    }
+                }
+//                catch (e: SocketTimeoutException) {
+//                    mensajeFlotante.postValue("Error de conexión: $e")
+//                }
+                finally {
                     resumenOrdenes()
                     isLoading.postValue(false)
                 }
@@ -80,7 +90,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun resumenOrdenes() {
+    private fun resumenOrdenes() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val resultado = resumenOrdenesUseCase.invoke()
@@ -108,8 +118,8 @@ class MainViewModel @Inject constructor(
             for (servicioCompleto in orden.servicioCompleto) {
 
 //                if (!flagMedir || !flagMedido || !flagMontar || !flagMontado) {
-                    // Si no he encontrado nada en los servicios, buscar en el último estado de la orden
-                if (servicioCompleto.estado.isNotEmpty()){
+                // Si no he encontrado nada en los servicios, buscar en el último estado de la orden
+                if (servicioCompleto.estado.isNotEmpty()) {
                     if (servicioCompleto.estado.last()?.estado.equals("Medir")) flagMedir = true
                     if (servicioCompleto.estado.last()?.estado.equals("Medido")) flagMedido = true
                     if (servicioCompleto.estado.last()?.estado.equals("Montar")) flagMontar = true
