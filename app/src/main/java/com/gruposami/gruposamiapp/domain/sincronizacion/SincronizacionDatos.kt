@@ -56,17 +56,20 @@ class SincronizacionDatos @Inject constructor(
 
         var mensaje = "Correcto"
         // 3º Paso
+        println(localDataSource)
+        println(ordenRemoteManagement.response?.body())
         try {
-            if (localDataSource.isNotEmpty() && !ordenRemoteManagement.response?.body().isNullOrEmpty()){
+//            if (localDataSource.isNotEmpty() && !ordenRemoteManagement.response?.body().isNullOrEmpty()){
                 compararListas(localDataSource, ordenRemoteManagement.response?.body()!!)
-            } else {
-                mensaje = "Error al sincronizar los datos."
-            }
+//            } else {
+//                mensaje = "Error al sincronizar los datos."
+//            }
         } catch (e: NullPointerException){
             mensaje = "Error sincronizando los datos. Codigo error 02. $e"
         } catch (e: Exception){
             mensaje = "Error sincronizando los datos. Codigo error 01. $e"
         }
+        println(mensaje)
         return mensaje
     }
 
